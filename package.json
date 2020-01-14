@@ -1,0 +1,21 @@
+{
+  "name": "hydraulic-lifts",
+  "license": "GPL-3.0",
+  "author": {
+    "name": "Luke Pan",
+    "email": "curly0328@gmail.com"
+  },
+  "version": "0.0.0-dev.0",
+  "description": "Hydraulic Lifts is a HTML5 educational and interactive simulation that runs in the browser and explores Pascal's Law.",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Luke0328/hydraulic-lifts.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Luke0328/hydraulic-lifts/issues"
+  },
+  "homepage": "https://github.com/Luke0328/hydraulic-lifts#readme",
+  "devDependencies": {
+    "@brandonli8/grunt-config": "0.0.0-dev.14"
+  }
+}
