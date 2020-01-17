@@ -15,7 +15,7 @@
 # Hydraulic Lifts
 
 <!-- Badges go here. -->
-[![Actions Status](git+https://github.com/Luke0328/hydraulic-lifts/workflows/CI/badge.svg)](git+https://github.com/Luke0328/hydraulic-lifts/actions?query=workflow%3ACI)
+[![Actions Status](https://github.com/Luke0328/hydraulic-lifts/workflows/CI/badge.svg)](https://github.com/Luke0328/hydraulic-lifts/actions?query=workflow%3ACI)
 
 <!-- Description -->
 <blockquote align="left">
@@ -33,7 +33,7 @@
 ### Installation
 (1) Clone the repository in a desired spot
 ```
-$ git clone git+https://github.com/Luke0328/hydraulic-lifts.git
+$ git clone https://github.com/Luke0328/hydraulic-lifts.git
 ```
 (2) Start the application.
 ```
@@ -52,4 +52,4 @@ Contact me via <a href="mailto:curly0328@gmail.com" target="_blank"> email</a>.
 Help improve **hydraulic-lifts** by creating a <a href="https://github.com/Luke0328/hydraulic-lifts/issues" target="_blank">New Issue</a>.
 
 <!-- Copyright -->
-<sub>Copyright © Luke Pan. All Rights Reserved.&nbsp;&nbsp;<b>|</b>&nbsp;&nbsp;See the <a href="git+https://github.com/Luke0328/hydraulic-lifts/blob/master/LICENSE" target="_blank">LICENSE</a>.</sub>
+<sub>Copyright © Luke Pan. All Rights Reserved.&nbsp;&nbsp;<b>|</b>&nbsp;&nbsp;See the <a href="https://github.com/Luke0328/hydraulic-lifts/blob/master/LICENSE" target="_blank">LICENSE</a>.</sub>

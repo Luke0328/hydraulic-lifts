@@ -9,7 +9,7 @@
   "description": "Hydraulic Lifts is a HTML5 educational and interactive simulation that runs in the browser and explores Pascal's Law.",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Luke0328/hydraulic-lifts.git"
+    "url": "https://github.com/Luke0328/hydraulic-lifts.git"
   },
   "bugs": {
     "url": "https://github.com/Luke0328/hydraulic-lifts/issues"
