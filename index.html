@@ -1,0 +1,91 @@
+<!-- Copyright © 2020 Luke Pan. All rights reserved. -->
+
+<!--—————————————————————————————————————————————————————————————————————————*!
+ * Hydraulic Lifts
+ *
+ * This application is licensed under the AGPL-3.0. See the full text
+ * here: https://github.com/Luke0328/hydraulic-lifts/blob/master/LICENSE.
+ * Contact curly0328@gmail.com for questions regarding licensing.
+ *
+ * The application-specific source code can be accessed at
+ * https://github.com/Luke0328/hydraulic-lifts.git. Help improve
+ * hydraulic-lifts by creating a new issue:
+ * https://github.com/Luke0328/hydraulic-lifts/issues
+ *
+ * Thank you for visiting!
+ *
+ * @author Luke Pan <curly0328@gmail.com>
+!*——————————————————————————————————————————————————————————————————————————-->
+
+<!DOCTYPE HTML>
+<html>
+<head>
+  <!-- Title -->
+  <title>Hydraulic Lifts</title>
+  <!--———————————————————————————————————————————————————————————————————————*!
+   * Google Analytics
+  !*————————————————————————————————————————————————————————————————————————-->
+  <!-- TODO
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-*********-*"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    window.dataLayer.push( [ 'js', new Date() ], [ 'config', 'UA-*********-*' ] );
+  </script>
+  -->
+  <!--———————————————————————————————————————————————————————————————————————*!
+   * Meta Data
+  !*————————————————————————————————————————————————————————————————————————-->
+  <meta charset="utf-8"/>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="viewport" content="initial-scale=1,width=device-width,height=device-height,user-scalable=no,maximum-scale=1,minimum-scale=1.0"/>
+  <meta name="keywords" content="hydraulic-lifts, Hydraulic Lifts"/>
+  <meta name="author" content="Luke Pan, curly0328@gmail.com"/>
+  <meta name="subject" content="Hydraulic Lifts">
+  <meta name="copyright" content="Copyright © Luke Pan. All rights reserved.">
+  <meta name="description" content="Hydraulic Lifts is a HTML5 educational and interactive simulation that runs in the browser and explores Pascal's Law."/>
+
+  <!-- Open Graph Protocol Meta Tags -->
+  <meta name="og:title" content="‪hydraulic-lifts">
+  <meta name="og:site_name" content="Hydraulic Lifts"/>
+  <meta name="og:type" content="website">
+  <meta name="og:url" content="https://github.com/Luke0328/hydraulic-lifts#readme">
+  <meta name="og:email" content="curly0328@gmail.com"/>
+  <meta name="og:description" content="Hydraulic Lifts is a HTML5 educational and interactive simulation that runs in the browser and explores Pascal's Law."/>
+  <!-- TODO <meta name="og:image" content=""> -->
+
+  <!-- Twitter-specific Meta Tags -->
+  <meta name="twitter:card" content="summary_large_image"/>
+  <meta name="twitter:title" content="Luke Pan"/>
+  <meta name="twitter:description" content="Hydraulic Lifts is a HTML5 educational and interactive simulation that runs in the browser and explores Pascal's Law."/>
+  <!-- TODO <meta name="twitter:image" content=""> -->
+
+  <!-- Favicon: Image displayed on the browser's address bar.-->
+  <!-- TODO <link rel="icon" type="image/JPG?" href=""/> -->
+</head>
+
+<!-- Make dark-gray for the loading phase so that the splash screen is black -->
+<body style="background-color:#0f0f0f;">
+<script type="text/javascript">
+
+  // Loads a synchronously-executed asynchronously-downloaded script tag, with
+  // optional data-main parameter. See
+  // http://www.html5rocks.com/en/tutorials/speed/script-loading/ for more about
+  // script loading. It helps to load all of the scripts with this method, so
+  // they are treated the same (and placed in the correct execution order).
+  const loadURL = ( preloadURL, main ) => {
+    const script = document.createElement( 'script' );
+    if ( typeof main === 'string' ) {
+      script.setAttribute( 'data-main', main );
+    }
+    script.type = 'text/javascript';
+    script.src = preloadURL;
+    script.async = false;
+    document.head.appendChild( script );
+  };
+
+  loadURL( './node_modules/requirejs/require.js', 'js/hydraulic-lifts-config.js' );
+
+</script>
+</body>
+</html>

@@ -17,5 +17,8 @@
   "homepage": "https://github.com/Luke0328/hydraulic-lifts#readme",
   "devDependencies": {
     "@brandonli8/grunt-config": "0.0.0-dev.14"
+  },
+  "dependencies": {
+    "requirejs": "^2.3.6"
   }
 }
