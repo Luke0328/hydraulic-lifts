@@ -1,4 +1,4 @@
-// Copyright
+// Copyright © 2020 Luke Pan. All rights reserved.
 
 /**
  * Grunt configuration file.
