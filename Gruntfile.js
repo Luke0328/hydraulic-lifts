@@ -2,7 +2,7 @@
 
 /**
  * Grunt configuration file.
- * 
+ *
  * @author Luke Pan
  */
 
