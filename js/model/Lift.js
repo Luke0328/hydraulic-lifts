@@ -11,6 +11,7 @@ class Lift{
 			force: 0;
 			initialRadius: 1;
 		};
+
 	this.centerPositionProperty = new Property( centerPosition, { type: Vector } );
 
 	this.radiusProperty = new Property( options.initialRadius, {
@@ -20,4 +21,5 @@ class Lift{
 
 	this.forceProperty = new Property( options.force, { type: Vector } );
 	}
+
 }
