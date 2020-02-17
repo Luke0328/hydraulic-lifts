@@ -14,17 +14,19 @@ define( require => {
 	const Property = require( 'SIM_CORE/util/Property' );
 	const Vector = require( 'SIM_CORE/util/Vector' );
 
-	class Lift{
+	class Lift {
 
-		 /**
-    	 * @param centerPosition - center position for the Lift
-	     * @param force - force exerted on or exerted by the Lift
-	     * @param radius - radius of the Lift surface
-	     */
-		constructor( centerPosition, force, radius ){
+		/**
+    	* @param centerPosition - center position for the Lift
+		* @param force - force exerted on or exerted by the Lift
+		* @param radius - radius of the Lift surface
+		*/
+		constructor( centerPosition, force, radius ) {
 			this._centerPosition = centerPosition;
 			this._force = force;
 			this._radius = radius;
 		}
-}
-})
+	}
+
+	return Lift;
+} );
