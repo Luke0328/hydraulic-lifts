@@ -17,7 +17,7 @@ define( require => {
 	class Lift {
 
 		/**
-    	 * @param centerPosition - center position for the Lift
+     * @param centerPosition - center position for the Lift
 		 * @param force - force exerted on or exerted by the Lift
 		 * @param radius - radius of the Lift surface
 		 */
