@@ -5,9 +5,9 @@
  * There is an input lift and an output lift.
  *
  * Primary responsibilities:
- *		- Keep track of the center position of each lift
- *		- Keep track of the radius of each lift
- *		- Keep track of the force exerted on the input lift or the force exerted by the output lift
+ *    - Keep track of the center position of each lift
+ *    - Keep track of the radius of each lift
+ *    - Keep track of the force exerted on the input lift or the force exerted by the output lift
  *
  * The output force changes according to the radii of the lifts and the input force.
  * The lifts move up and down according to the forces. A greater force results in a greater
@@ -19,26 +19,26 @@
  */
 
 define( require => {
-	'use strict';
+  'use strict';
 
-	// modules
-	// const assert = require( 'SIM_CORE/util/assert' );
-	// const Property = require( 'SIM_CORE/util/Property' );
-	// const Vector = require( 'SIM_CORE/util/Vector' );
+  // modules
+  // const assert = require( 'SIM_CORE/util/assert' );
+  // const Property = require( 'SIM_CORE/util/Property' );
+  // const Vector = require( 'SIM_CORE/util/Vector' );
 
-	class Lift {
+  class Lift {
 
-		/**
+    /**
      * @param centerPosition - center position for the Lift
-		 * @param force - force exerted on or exerted by the Lift in newtons
-		 * @param radius - radius of the Lift surface in meters
-		 */
-		constructor( centerPosition ) {
-			this._centerPosition = centerPosition;
-			this._force = 0;
-			this._radius = 1;
-		}
-	}
+     * @param force - force exerted on or exerted by the Lift in newtons
+     * @param radius - radius of the Lift surface in meters
+     */
+    constructor( centerPosition ) {
+      this._centerPosition = centerPosition;
+      this._force = 0;
+      this._radius = 1;
+    }
+  }
 
-	return Lift;
+  return Lift;
 } );
