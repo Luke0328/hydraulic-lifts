@@ -36,13 +36,13 @@ define( require => {
 
       options = {
 
-        initialForce = 0, // {number} - initial force exerted on or exerted by Lift, in Newtons
+        initialForce: 0, // {number} - initial force exerted on or exerted by Lift, in Newtons
 
-        initialRadius = 1, // {number} - initial surface radius of Lift, in Meters
+        initialRadius: 1, // {number} - initial surface radius of Lift, in Meters
 
         // rewrite options such that it overrides the defaults above if provided.
         ...options
-      }
+      };
 
       // @public (read-only) centerPositionProperty - Property of the position of the Lift center
       this.centerPositionProperty = new Property( initialCenterPosition, { type: Vector } );
@@ -51,7 +51,7 @@ define( require => {
       this.forceProperty = new Property( options.initialForce, {
         type: 'number',
         isValidValue: value => value >= 0 // force must be greater than or equal to 0
-      } )
+      } );
 
       // @public (read-only) radiusProperty - Property of the surface radius of the Lift
       this.radiusProperty = new Property( options.initialRadius, {
@@ -61,7 +61,7 @@ define( require => {
     }
 
     /**
-     * Resets the Lift properties to their initial values
+     * Resets Lift properties to their initial values
      * @public
      */
     reset() {
