@@ -69,6 +69,62 @@ define( require => {
       this.forceProperty.reset();
       this.radiusProperty.reset();
     }
+
+    // Convenience Methods
+
+    /**
+     * Gets the position of the Ball's center
+     * @public
+     * @returns {Vector} - in meter coordinates
+     */
+    get center() {
+      return this.centerPositionProperty.value;
+    }
+
+    /**
+     * Sets the position of the Ball's center
+     * @public
+     * @param {Vector} center - in meter coordinates
+     */
+    set center( center ) {
+      this.centerPositionProperty.value = center;
+    }
+
+    /**
+     * Gets the force on or from the Lift
+     * @public
+     * @returns {number} - in Newtons
+     */
+    get force() {
+      return this.forceProperty.value;
+    }
+
+    /**
+     * Sets the force on or from the Lift
+     * @public
+     * @param {number} force - in Newtons
+     */
+    set force( force ) {
+      this.forceProperty.value = force;
+    }
+
+    /**
+     * Gets the surface radius of the Lift
+     * @public
+     * @returns {number} - in meters
+     */
+    get radius() {
+      return this.radiusProperty.value;
+    }
+
+    /**
+     * Sets the surface radius of the Lift
+     * @public
+     * @param {number} radius - in meters
+     */
+    set center( radius ) {
+      this.radiusProperty.value = radius;
+    }
   }
 
   return Lift;
