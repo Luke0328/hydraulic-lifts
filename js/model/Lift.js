@@ -5,8 +5,8 @@
  * There is an input lift and an output lift.
  *
  * Primary responsibilities:
- *    - Keep track of the center position of each lift
- *    - Keep track of the surface radius of each lift
+ *    - Keep track of the center position of the lift
+ *    - Keep track of the surface radius of the lift
  *    - Keep track of the force exerted on the input lift or the force exerted by the output lift
  *
  * The output force changes according to the radii of the lifts and the input force.
