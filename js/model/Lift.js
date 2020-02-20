@@ -122,7 +122,7 @@ define( require => {
      * @public
      * @param {number} radius - in meters
      */
-    set center( radius ) {
+    set radius( radius ) {
       this.radiusProperty.value = radius;
     }
   }
