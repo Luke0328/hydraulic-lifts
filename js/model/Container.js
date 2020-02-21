@@ -12,8 +12,8 @@ define( require => {
 
   // modules
   // const assert = require( 'SIM_CORE/util/assert' );
-  const Property = require( 'SIM_CORE/util/Property' );
   const Lift = require( 'HYDRAULIC_LIFTS/model/Lift' );
+  const Property = require( 'SIM_CORE/util/Property' );
   const Vector = require( 'SIM_CORE/util/Vector' );
 
   // constants
@@ -25,9 +25,9 @@ define( require => {
 
     constructor() {
 
-      this.inputOpeningProperty = new Property ();
+      this.inputOpeningWidthProperty = new Property();
 
-      this.outputOpeningProperty = new Property ();
+      this.outputOpeningWidthProperty = new Property();
 
       this.inputLift = new Lift( INITIAL_INPUT_LIFT_CENTER );
 
