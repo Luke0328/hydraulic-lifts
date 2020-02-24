@@ -10,10 +10,16 @@
  *    - Keep track of the force exerted on the input lift or the force exerted by the output lift
  *
  * The output force changes according to the radii of the lifts and the input force.
+ *
+ * Equation for the magnification of force:
+ *    - Output Force = (Input Area / Output Area) * Input Force
+ *
  * The lifts move up and down according to the forces. A greater force results in a greater
  * displacement from the starting center position of each lift.
  *
- * For physics background information see https://en.wikipedia.org/wiki/Pascal%27s_law
+ * For physics background information see:
+ *    - https://en.wikipedia.org/wiki/Pascal%27s_law
+ *    - http://hyperphysics.phy-astr.gsu.edu/hbase/pasc.html
  *
  * @author Luke Pan <curly0328@gmail.com>
  */

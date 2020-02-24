@@ -1,8 +1,8 @@
 // Copyright © 2020 Luke Pan. All rights reserved.
 
 /**
- * Container is the top level model for the simulation.
- * The Container contains two lift objects: an Input Lift and an Output Lift.
+ * Container is the general model for the entire container seen in the simulation.
+ * The Container object contains two lift objects: an Input Lift and an Output Lift.
  *
  * @author Luke Pan <curly0328@gmail.com>
  */
@@ -40,7 +40,7 @@ define( require => {
       // @public (read-only) {Lift} - Output Lift object
       this.outputLift = new Lift( INITIAL_OUTPUT_LIFT_CENTER, { type: Vector } );
 
-      // @public (read-only) containerCenterPosition - Center position of the container (constant)
+      // @public (read-only) containerCenterPosition - Center position of the container (does not change)
       this.containerCenterPosition = CONTAINER_CENTER_POSITION;
     }
 
