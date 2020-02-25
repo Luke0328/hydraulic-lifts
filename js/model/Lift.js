@@ -17,7 +17,7 @@
  * The lifts move up and down according to the forces. A greater force results in a greater
  * displacement from the starting center position of each lift.
  *
- * For physics background information see:
+ * For more physics background information see:
  *    - https://en.wikipedia.org/wiki/Pascal%27s_law
  *    - http://hyperphysics.phy-astr.gsu.edu/hbase/pasc.html
  *

@@ -26,19 +26,19 @@ define( require => {
 
     constructor() {
 
-      // @public (read-only) inputOpeningWidthProperty - Property of the width of the input opening
-      this.inputOpeningWidthProperty = new Property( INITIAL_INPUT_LIFT_CENTER * 2 + OPENING_GAP,
-      { type: 'number' } );
-
-      // @public (read-only) outputOpeningWidthProperty - Property of the width of the output opening
-      this.outputOpeningWidthProperty = new Property( INITIAL_OUTPUT_LIFT_CENTER * 2 + OPENING_GAP,
-      { type: 'number' } );
-
       // @public (read-only) {Lift} - Input Lift object
       this.inputLift = new Lift( INITIAL_INPUT_LIFT_CENTER, { type: Vector } );
 
       // @public (read-only) {Lift} - Output Lift object
       this.outputLift = new Lift( INITIAL_OUTPUT_LIFT_CENTER, { type: Vector } );
+
+      // @public (read-only) inputOpeningWidthProperty - Property of the width of the input opening
+      this.inputOpeningWidthProperty = new Property( this.inputLift.radius * 2 + OPENING_GAP * 2,
+      { type: 'number' } );
+
+      // @public (read-only) outputOpeningWidthProperty - Property of the width of the output opening
+      this.outputOpeningWidthProperty = new Property( this.outputLift.radius * 2 + OPENING_GAP * 2,
+      { type: 'number' } );
 
       // @public (read-only) containerCenterPosition - Center position of the container (does not change)
       this.containerCenterPosition = CONTAINER_CENTER_POSITION;
