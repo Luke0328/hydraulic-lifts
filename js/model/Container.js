@@ -27,10 +27,10 @@ define( require => {
     constructor() {
 
       // @public (read-only) {Lift} - Input Lift object
-      this.inputLift = new Lift( INITIAL_INPUT_LIFT_CENTER, { type: Vector } );
+      this.inputLift = new Lift( INITIAL_INPUT_LIFT_CENTER );
 
       // @public (read-only) {Lift} - Output Lift object
-      this.outputLift = new Lift( INITIAL_OUTPUT_LIFT_CENTER, { type: Vector } );
+      this.outputLift = new Lift( INITIAL_OUTPUT_LIFT_CENTER, { initialRadius: 10 } );
 
       // @public (read-only) inputOpeningWidthProperty - Property of the width of the input opening
       this.inputOpeningWidthProperty = new Property( this.inputLift.radius * 2 + OPENING_GAP * 2,
