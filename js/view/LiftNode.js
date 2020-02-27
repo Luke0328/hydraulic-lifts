@@ -43,6 +43,15 @@ define( require => {
         fill: options.fill,
         strokeWidth: options.strokeWidth
       } );
+      this.addChild( this.liftRectangle );
+    }
+
+    updateLiftNode( lift, modelViewTransform ) {
+
+      this.liftRectangle.width = lift.radius * 2;
+
+      this.liftRectangle.y = lift.force * 5;
+
     }
   }
 
