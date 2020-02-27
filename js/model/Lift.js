@@ -66,7 +66,7 @@ define( require => {
       } );
 
       // @public (read-only) areaProperty - Property of the surface area of the Lift
-      this.areaProperty = new Property( Math.PI * ( Math.pow( options.initialRadius, 2 ) ), {
+      this.surfaceAreaProperty = new Property( Math.PI * ( Math.pow( options.initialRadius, 2 ) ), {
         type: 'number'
       } );
     }

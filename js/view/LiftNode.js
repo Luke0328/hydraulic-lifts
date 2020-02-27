@@ -11,6 +11,7 @@ define( require => {
   // modules
   // const assert = require( 'SIM_CORE/util/assert' );
   // const Lift = require( 'HYDRAULIC_LIFTS/model/Lift' );
+  const Multilink = require( 'SIM_CORE/util/Multilink' );
   // const Property = require( 'SIM_CORE/util/Property' );
   const Rectangle = require( 'SIM_CORE/scenery/Rectangle' );
   const SVGNode = require( 'SIM_CORE/scenery/SVGNode' );
@@ -24,7 +25,6 @@ define( require => {
 
         width: 300,
         height: 20,
-        cornerRadius: 5,
         stroke: 'black',
         fill: 'red',
         strokeWidth: 1,
@@ -38,20 +38,26 @@ define( require => {
       this.liftRectangle = new Rectangle( {
         width: options.width,
         height: options.height,
-        cornerRadius: options.cornerRadius,
         stroke: options.stroke,
         fill: options.fill,
         strokeWidth: options.strokeWidth
       } );
       this.addChild( this.liftRectangle );
+
+      this.updateLiftNodeMultilink = new Multilink( [ lift.radiusProperty, lift.centerPositionProperty ], () => {
+        this.updateLiftNode( lift, modelViewTransform );
+        } );
     }
 
     updateLiftNode( lift, modelViewTransform ) {
 
-      this.liftRectangle.width = lift.radius * 2;
+      this.liftRectangle.width = modelViewTransform.modelToViewDeltaX( lift.radius * 2 );
 
-      this.liftRectangle.y = lift.force * 5;
+      this.liftRectangle.y = modelViewTransform.modelToViewY( lift.force * 5 );
+    }
 
+    dispose() {
+      this.updateBallNodeMultilink.dispose();
     }
   }
 

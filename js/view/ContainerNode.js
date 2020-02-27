@@ -16,7 +16,12 @@ define( require => {
 
   class ContainerNode extends SVGNode {
 
+    constructor( container,  modelViewTransform, options) {
 
+      options = { ...options };
+
+      super ( options );
+    }
   }
 
   return ContainerNode;
