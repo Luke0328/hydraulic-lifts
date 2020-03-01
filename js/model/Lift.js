@@ -84,7 +84,7 @@ define( require => {
     // Convenience Methods
 
     /**
-     * Gets the position of the Ball's center
+     * Gets the position of the Lift's center
      * @public
      * @returns {Vector} - in meter coordinates
      */
@@ -93,7 +93,7 @@ define( require => {
     }
 
     /**
-     * Sets the position of the Ball's center
+     * Sets the position of the Lift's center
      * @public
      * @param {Vector} center - in meter coordinates
      */

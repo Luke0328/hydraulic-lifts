@@ -44,6 +44,17 @@ define( require => {
       this.containerCenterPosition = CONTAINER_CENTER_POSITION;
     }
 
+    get inputOpeningWidth() {
+      return this.inputOpeningWidthProperty.value;
+    }
+
+    get outputOpeningWidthProperty() {
+      return this.outputOpeningWidthProperty.value;
+    }
+
+    get containerCenterPosition() {
+      return this.containerCenterPosition;
+    }
   }
 
   return Container;

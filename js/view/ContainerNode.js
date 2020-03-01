@@ -1,6 +1,8 @@
 // Copyright © 2020 Luke Pan. All rights reserved.
 
 /**
+ * View for the container in the simulation.
+ * ContainerNode creates two LiftNode's.
  *
  * @author Luke Pan <curly0328@gmail.com>
  */
@@ -12,6 +14,7 @@ define( require => {
   // const assert = require( 'SIM_CORE/util/assert' );
   const LiftNode = require( 'HYDRAULIC_LIFTS/view/LiftNode' );
   // const Property = require( 'SIM_CORE/util/Property' );
+  const Rectangle = require( 'SIM_CORE/scenery/Rectangle' );
   const SVGNode = require( 'SIM_CORE/scenery/SVGNode' );
 
   class ContainerNode extends SVGNode {
@@ -28,14 +31,43 @@ define( require => {
       // Create the output lift node
       const outputLiftNode = new LiftNode( container.outputLift, modelViewTransform );
 
+      // Create the container center rectangle
       const containerCenterRectangle = new Rectangle( {
+        x: container.containerCenterPosition.x,
+        y: container.containerCenterPosition.y,
         width: 400,
-        height 300,
+        height: 250,
         stroke: 'black',
-        fill: 'white',
+        fill: 'blue',
         strokewidth: 1
        } );
-  }
+
+      // Create the container's input opening
+      const containerInputOpening = new Rectangle( {
+        width: container.inputOpeningWidth,
+        height: 350,
+        stroke: 'black',
+        fill: 'blue',
+        strokewidth: 1
+      } );
+
+      // Create the container's output opening
+      const containerOutputOpening = new Rectangle( {
+        width: container.outputOpeningWidth,
+        height: 350,
+        stroke: 'black',
+        fill: 'blue',
+        strokewidth: 1
+      } );
+
+      this.setChildren( [
+        containerCenterRectangle,
+        containerInputOpening,
+        containerOutputOpening,
+        inputLiftNode,
+        outputLiftNode
+        ] );
+    }
   }
   return ContainerNode;
 } );

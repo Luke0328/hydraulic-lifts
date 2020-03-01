@@ -22,12 +22,9 @@ define( require => {
     constructor( lift, modelViewTransform, options ) {
 
       options = {
-
         width: 300,
         height: 20,
-        stroke: 'black',
         fill: 'red',
-        strokeWidth: 1,
 
         // rewrite options such that it overrides the defaults above if provided.
         ...options
@@ -38,9 +35,7 @@ define( require => {
       this.liftRectangle = new Rectangle( {
         width: options.width,
         height: options.height,
-        stroke: options.stroke,
-        fill: options.fill,
-        strokeWidth: options.strokeWidth
+        fill: options.fill
       } );
       this.addChild( this.liftRectangle );
 
