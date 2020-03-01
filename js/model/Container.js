@@ -52,7 +52,7 @@ define( require => {
       return this.outputOpeningWidthProperty.value;
     }
 
-    get containerCenterPosition() {
+    get containerCenter() {
       return this.containerCenterPosition;
     }
   }

@@ -21,7 +21,12 @@ define( require => {
 
     constructor( container, modelViewTransform, options ) {
 
-      options = { ...options };
+      options = {
+        stroke: 'black',
+        fill: 'blue',
+        strokewidth: 1,
+        ...options
+      };
 
       super( options );
 
@@ -33,33 +38,34 @@ define( require => {
 
       // Create the container center rectangle
       const containerCenterRectangle = new Rectangle( {
-        x: container.containerCenterPosition.x,
-        y: container.containerCenterPosition.y,
+        x: container.containerCenter.x,
+        y: container.containerCenter.y,
         width: 400,
         height: 250,
-        stroke: 'black',
-        fill: 'blue',
-        strokewidth: 1
+        stroke: options.stroke,
+        fill: options.fill,
+        strokewidth: options.strokewidth
        } );
 
-      // Create the container's input opening
+      // Create the container's input opening rectangle
       const containerInputOpening = new Rectangle( {
         width: container.inputOpeningWidth,
         height: 350,
-        stroke: 'black',
-        fill: 'blue',
-        strokewidth: 1
+        stroke: options.stroke,
+        fill: options.fill,
+        strokewidth: options.strokewidth
       } );
 
-      // Create the container's output opening
+      // Create the container's output opening rectangle
       const containerOutputOpening = new Rectangle( {
         width: container.outputOpeningWidth,
         height: 350,
-        stroke: 'black',
-        fill: 'blue',
-        strokewidth: 1
+        stroke: options.stroke,
+        fill: options.fill,
+        strokewidth: options.strokewidth
       } );
 
+      // Render the children in the correct z-layering
       this.setChildren( [
         containerCenterRectangle,
         containerInputOpening,

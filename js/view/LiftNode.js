@@ -1,6 +1,7 @@
 // Copyright © 2020 Luke Pan. All rights reserved.
 
 /**
+ * View for a Lift object in the simulation.
  *
  * @author Luke Pan <curly0328@gmail.com>
  */
@@ -22,6 +23,8 @@ define( require => {
     constructor( lift, modelViewTransform, options ) {
 
       options = {
+        x: lift.center.x,
+        y: lift.center.y,
         width: 300,
         height: 20,
         fill: 'red',
@@ -33,15 +36,19 @@ define( require => {
       super( options );
 
       this.liftRectangle = new Rectangle( {
+        x: options.x,
+        y: options.y,
         width: options.width,
         height: options.height,
         fill: options.fill
       } );
+
       this.addChild( this.liftRectangle );
 
       this.updateLiftNodeMultilink = new Multilink( [ lift.radiusProperty, lift.centerPositionProperty ], () => {
         this.updateLiftNode( lift, modelViewTransform );
         } );
+
     }
 
     updateLiftNode( lift, modelViewTransform ) {
