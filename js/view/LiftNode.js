@@ -55,7 +55,7 @@ define( require => {
 
       this.liftRectangle.width = modelViewTransform.modelToViewDeltaX( lift.radius * 2 );
 
-      this.liftRectangle.y = modelViewTransform.modelToViewY( lift.force * 5 );
+      this.liftRectangle.y = modelViewTransform.modelToViewY( lift.center.y + lift.force * 5 );
     }
 
     dispose() {

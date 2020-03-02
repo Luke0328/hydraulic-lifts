@@ -15,11 +15,22 @@ define( require => {
   class ControlPanel extends SVGNode {
 
     constructor( options ) {
-      options = { ...options };
+      options = {
+        width: 200,
+        height: 300,
+        ...options
+      };
       super( options );
 
       // Create the background rectangle
-      const background = new Rectangle();
+      const background = new Rectangle( {
+        width: options.width,
+        height: options.height,
+        cornerRadius: 5,
+        stroke: 'black',
+        fill: 'rgb( 211, 211, 211 )',
+        strokeWidth: '1'
+       } );
 
       // Create the slider for the input force
       const inputForceSlider = new SliderNode();
