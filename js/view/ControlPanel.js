@@ -1,6 +1,8 @@
 // Copyright © 2020 Luke Pan. All rights reserved.
 
 /**
+ * View for the control panel in the simulation.
+ * The control panel will contain 3 sliders.
  *
  * @author Luke Pan <curly0328@gmail.com>
  */

@@ -1,7 +1,7 @@
 // Copyright © 2020 Luke Pan. All rights reserved.
 
 /**
- * View for a Lift object in the simulation.
+ * Lift Node is the view for a Lift object in the simulation.
  *
  * @author Luke Pan <curly0328@gmail.com>
  */

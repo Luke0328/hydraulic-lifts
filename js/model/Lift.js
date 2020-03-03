@@ -2,20 +2,20 @@
 
 /**
  * Lift is the general model for the two lifts seen in the simulation.
- * There is an input lift and an output lift.
+ * There is an input lift and an output lift that are subclasses of Lift.
  *
  * Primary responsibilities:
- *    - Keep track of the center position of the lift
+ *    - Keep track of the center X of the lift
  *    - Keep track of the surface radius of the lift
  *    - Keep track of the force exerted on the input lift or the force exerted by the output lift
  *
  * The output force changes according to the radii of the lifts and the input force.
  *
  * Equation for the magnification of force:
- *    - Output Force = (Input Area / Output Area) * Input Force
+ *    - Output Force = (Output Area / Input Area) * Input Force
  *
  * The lifts move up and down according to the forces. A greater force results in a greater
- * displacement from the starting center position of each lift.
+ * displacement from the starting center Y of each lift.
  *
  * For more physics background information see:
  *    - https://en.wikipedia.org/wiki/Pascal%27s_law
@@ -30,15 +30,15 @@ define( require => {
   // modules
   // const assert = require( 'SIM_CORE/util/assert' );
   const Property = require( 'SIM_CORE/util/Property' );
-  const Vector = require( 'SIM_CORE/util/Vector' );
+  // const Vector = require( 'SIM_CORE/util/Vector' );
 
   class Lift {
 
     /**
-     * @param {Vector} initialCenterPosition - center position for the Lift
+     * @param {Vector} initialCenterX - center x-coordinate for the Lift
      * @param {object} [options] - controls Lift properties
      */
-    constructor( initialCenterPosition, options ) {
+    constructor( initialCenterX, options ) {
 
       options = {
 
@@ -50,8 +50,8 @@ define( require => {
         ...options
       };
 
-      // @public (read-only) centerPositionProperty - Property of the position of the Lift center
-      this.centerPositionProperty = new Property( initialCenterPosition, { type: Vector } );
+      // @public (read-only) centerXProperty - Property of the x-coordinate of the Lift center
+      this.centerXProperty = new Property( initialCenterX, { type: 'number' } );
 
       // @public (read-only) forceProperty - Property of the force on or from the Lift
       this.forceProperty = new Property( options.initialForce, {
@@ -64,11 +64,6 @@ define( require => {
         type: 'number',
         isValidValue: value => value > 0 // radius must be greater than 0
       } );
-
-      // @public (read-only) areaProperty - Property of the surface area of the Lift
-      this.surfaceAreaProperty = new Property( Math.PI * ( Math.pow( options.initialRadius, 2 ) ), {
-        type: 'number'
-      } );
     }
 
     /**
@@ -76,7 +71,7 @@ define( require => {
      * @public
      */
     reset() {
-      this.centerPositionProperty.reset();
+      this.centerXProperty.reset();
       this.forceProperty.reset();
       this.radiusProperty.reset();
     }
@@ -84,21 +79,21 @@ define( require => {
     // Convenience Methods
 
     /**
-     * Gets the position of the Lift's center
+     * Gets the x-coordinate of the Lift's center
      * @public
      * @returns {Vector} - in meter coordinates
      */
     get center() {
-      return this.centerPositionProperty.value;
+      return this.centerXProperty.value;
     }
 
     /**
-     * Sets the position of the Lift's center
+     * Sets the x-coordinate of the Lift's center
      * @public
      * @param {Vector} center - in meter coordinates
      */
     set center( center ) {
-      this.centerPositionProperty.value = center;
+      this.centerXProperty.value = center;
     }
 
     /**

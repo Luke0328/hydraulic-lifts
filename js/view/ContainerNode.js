@@ -24,7 +24,7 @@ define( require => {
       options = {
         stroke: 'black',
         fill: 'blue',
-        strokewidth: 1,
+        strokewidth: 2,
         ...options
       };
 
