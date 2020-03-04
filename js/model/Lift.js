@@ -9,8 +9,6 @@
  *    - Keep track of the surface radius of the lift
  *    - Keep track of the force exerted on the input lift or the force exerted by the output lift
  *
- * The output force changes according to the radii of the lifts and the input force.
- *
  * Equation for the magnification of force:
  *    - Output Force = (Output Area / Input Area) * Input Force
  *
@@ -35,7 +33,7 @@ define( require => {
   class Lift {
 
     /**
-     * @param {Vector} initialCenterX - center x-coordinate for the Lift
+     * @param {number} initialCenterX - center x-coordinate for the Lift
      * @param {object} [options] - controls Lift properties
      */
     constructor( initialCenterX, options ) {
@@ -81,7 +79,7 @@ define( require => {
     /**
      * Gets the x-coordinate of the Lift's center
      * @public
-     * @returns {Vector} - in meter coordinates
+     * @returns {number} - in meters
      */
     get center() {
       return this.centerXProperty.value;
@@ -90,7 +88,7 @@ define( require => {
     /**
      * Sets the x-coordinate of the Lift's center
      * @public
-     * @param {Vector} center - in meter coordinates
+     * @param {number} center - in meters
      */
     set center( center ) {
       this.centerXProperty.value = center;

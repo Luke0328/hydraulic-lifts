@@ -2,7 +2,7 @@
 
 /**
  * InputLift is the general model for the Input Lift.
- * Copies Lift; is created to mirror OutputLift.
+ * InputLift is a copy of Lift; is created to mirror OutputLift.
  *
  * @author Luke Pan <curly0328@gmail.com>
  */
@@ -15,6 +15,10 @@ define( require => {
 
   class InputLift extends Lift {
 
+    /**
+     * @param {number} initialCenterX - center x-coordinate for the Input Lift
+     * @param {object} [options] - controls Output Lift properties
+     */
     constructor( initialCenterX, options ) {
 
       // rewrite options such that it overrides the defaults above if provided.

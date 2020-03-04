@@ -17,16 +17,15 @@ define( require => {
   const Rectangle = require( 'SIM_CORE/scenery/Rectangle' );
   const SVGNode = require( 'SIM_CORE/scenery/SVGNode' );
 
-
   class LiftNode extends SVGNode {
 
-    constructor( lift, modelViewTransform, options ) {
+    constructor( lift, initialCenterY, modelViewTransform, options ) {
 
       options = {
-        x: lift.center.x,
-        y: lift.center.y,
-        width: 300,
-        height: 20,
+        x: lift.centerX,
+        y: initialCenterY,
+        width: lift.radius * 2,
+        height: 1,
         fill: 'red',
 
         // rewrite options such that it overrides the defaults above if provided.
@@ -34,6 +33,8 @@ define( require => {
       };
 
       super( options );
+
+      this.centerYProperty = new Property( initialCenterY, { type: 'number' } );
 
       this.liftRectangle = new Rectangle( {
         x: options.x,
@@ -45,7 +46,12 @@ define( require => {
 
       this.addChild( this.liftRectangle );
 
-      this.updateLiftNodeMultilink = new Multilink( [ lift.radiusProperty, lift.centerPositionProperty ], () => {
+      /**
+       * Create a Multilink to update the appearance of the Lift. Observe when following properties change:
+       * - lift.radiusProperty - updates the width of liftRectangle to match the width of the lift
+       * - this.centerYProperty - updates the y-coordinates of the liftRectangle
+       */
+      new Multilink( [ lift.radiusProperty, this.centerYProperty ], () => {
         this.updateLiftNode( lift, modelViewTransform );
         } );
 
@@ -55,7 +61,7 @@ define( require => {
 
       this.liftRectangle.width = modelViewTransform.modelToViewDeltaX( lift.radius * 2 );
 
-      this.liftRectangle.y = modelViewTransform.modelToViewY( lift.center.y + lift.force * 5 );
+      this.liftRectangle.y = modelViewTransform.modelToViewY( initialCenterY + lift.force * 5 );
     }
 
     dispose() {

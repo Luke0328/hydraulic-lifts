@@ -36,9 +36,15 @@ define( require => {
       this.containerCenterPosition = CONTAINER_CENTER_POSITION;
     }
 
+    /**
+     * Gets the coordinates of the Containter's center
+     * @public
+     * @returns {Vector} - in meter coordinates
+     */
     get containerCenter() {
       return this.containerCenterPosition;
     }
+
   }
 
   return Container;
