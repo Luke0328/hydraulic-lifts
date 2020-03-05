@@ -12,6 +12,7 @@ define( require => {
   // modules
   const LiftNode = require( 'HYDRAULIC_LIFTS/view/LiftNode' );
   const Multilink = require( 'SIM_CORE/util/Multilink' );
+  const VectorNode = require( 'SIM_CORE/scenery/VectorNode' );
 
   class OutputLiftNode extends LiftNode {
 
@@ -21,6 +22,10 @@ define( require => {
 
       super( lift, initialCenterY, modelViewTransform, options );
 
+      this.forceVector = new VectorNode( Vector.ZERO, Vector.ZERO, { fill: 'green' } );
+
+      this.addChild( this.forceVector );
+
       /**
        * Create a Multilink to update the appearance of the Lift. Observe when following properties change:
        * - lift.radiusProperty - updates the width of liftRectangle to match the width of the lift
@@ -28,14 +33,15 @@ define( require => {
        */
       this.updateLiftNodeMultilink = new Multilink( [ lift.radiusProperty, this.centerYProperty ], () => {
         this.updateLiftNode( lift, modelViewTransform );
-        } );
+      } );
+
     }
 
     updateLiftNode( lift, modelViewTransform ) {
 
       this.liftRectangle.width = modelViewTransform.modelToViewDeltaX( lift.radius * 2 );
 
-      this.liftRectangle.y = modelViewTransform.modelToViewY( this.centerYProperty.value + lift.force * 50 );
+      this.liftRectangle.y = this.centerYProperty.value + modelViewTransform.modelToViewY( lift.force * 50 );
     }
   }
 
