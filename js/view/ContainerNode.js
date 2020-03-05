@@ -19,8 +19,8 @@ define( require => {
   const SVGNode = require( 'SIM_CORE/scenery/SVGNode' );
 
   // constants
-  const INITIAL_INPUT_CENTER_Y = 3;
-  const INITIAL_OUPUT_CENTER_Y = 3;
+  const INITIAL_INPUT_CENTER_Y = 300;
+  const INITIAL_OUTPUT_CENTER_Y = 800;
   const OPENING_GAP = 0.05;
 
   class ContainerNode extends SVGNode {
@@ -40,7 +40,7 @@ define( require => {
       const inputLiftNode = new LiftNode( container.inputLift, INITIAL_INPUT_CENTER_Y, modelViewTransform );
 
       // Create the output lift node
-      const outputLiftNode = new LiftNode( container.outputLift, INITIAL_OUTPUT_CENTER_Y,modelViewTransform );
+      const outputLiftNode = new LiftNode( container.outputLift, INITIAL_OUTPUT_CENTER_Y, modelViewTransform );
 
       // Create the container center rectangle
       const containerCenterRectangle = new Rectangle( {
@@ -71,6 +71,11 @@ define( require => {
         strokewidth: options.strokewidth
       } );
 
+      /**
+       * Create a Multilink to update the appearances of the openings. Observe when following properties change:
+       * -
+       *
+       */
       new Multilink( [ container.inputLift.radiusProperty, container.outputLift.radiusProperty ],
         ( inputRadius, outputRadius ) => {
         this.containerInputOpening.width = 2 * ( inputRadius + OPENING_GAP );

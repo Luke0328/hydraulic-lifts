@@ -15,7 +15,7 @@
  * The lifts move up and down according to the forces. A greater force results in a greater
  * displacement from the starting center Y of each lift.
  *
- * For more physics background information see:
+ * For physics background information see:
  *    - https://en.wikipedia.org/wiki/Pascal%27s_law
  *    - http://hyperphysics.phy-astr.gsu.edu/hbase/pasc.html
  *
@@ -75,13 +75,12 @@ define( require => {
     }
 
     // Convenience Methods
-
     /**
      * Gets the x-coordinate of the Lift's center
      * @public
      * @returns {number} - in meters
      */
-    get center() {
+    get centerX() {
       return this.centerXProperty.value;
     }
 
@@ -90,7 +89,7 @@ define( require => {
      * @public
      * @param {number} center - in meters
      */
-    set center( center ) {
+    set centerX( center ) {
       this.centerXProperty.value = center;
     }
 
