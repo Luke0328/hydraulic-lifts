@@ -12,36 +12,44 @@ define( require => {
   // modules
   const LiftNode = require( 'HYDRAULIC_LIFTS/view/LiftNode' );
   const Multilink = require( 'SIM_CORE/util/Multilink' );
+  const Vector = require( 'SIM_CORE/util/Vector' );
   const VectorNode = require( 'SIM_CORE/scenery/VectorNode' );
 
   class OutputLiftNode extends LiftNode {
 
-    constructor( lift, initialCenterY, modelViewTransform, options ) {
+    constructor( outputLift, initialCenterY, modelViewTransform, options ) {
 
       options = { ...options };
 
-      super( lift, initialCenterY, modelViewTransform, options );
+      super( outputLift, initialCenterY, modelViewTransform, options );
 
+      // @public {VectorNode} - represents the force exerted by the lift, initialized at 0
       this.forceVector = new VectorNode( Vector.ZERO, Vector.ZERO, { fill: 'green' } );
-
       this.addChild( this.forceVector );
 
       /**
        * Create a Multilink to update the appearance of the Lift. Observe when following properties change:
        * - lift.radiusProperty - updates the width of liftRectangle to match the width of the lift
-       * - this.centerYProperty - updates the y-coordinates of the liftRectangle
+       * - outputLift.forceProperty - updates the y-coordinates of the liftRectangle and the length of the forceVector
+       * based on the force
        */
-      this.updateLiftNodeMultilink = new Multilink( [ lift.radiusProperty, this.centerYProperty ], () => {
-        this.updateLiftNode( lift, modelViewTransform );
+      this.updateLiftNodeMultilink = new Multilink( [ outputLift.radiusProperty, outputLift.forceProperty ], () => {
+        this.updateLiftNode( outputLift, modelViewTransform );
       } );
 
     }
 
-    updateLiftNode( lift, modelViewTransform ) {
+    updateLiftNode( outputLift, modelViewTransform ) {
 
-      this.liftRectangle.width = modelViewTransform.modelToViewDeltaX( lift.radius * 2 );
+      this.liftRectangle.width = modelViewTransform.modelToViewDeltaX( outputLift.radius * 2 );
 
-      this.liftRectangle.y = this.centerYProperty.value + modelViewTransform.modelToViewY( lift.force * 50 );
+      this.liftRectangle.y = this.centerYProperty.value + modelViewTransform.modelToViewY( outputLift.force * 5 );
+
+      const start = new Vector( modelViewTransform.modelToViewX( outputLift.centerX ), this.liftRectangle.y );
+
+      const end = start.copy().add( new Vector( 0, modelViewTransform.modelToViewDeltaY( outputLift.force * 3 ) ) );
+
+      this.forceVector.set( start, end );
     }
   }
 

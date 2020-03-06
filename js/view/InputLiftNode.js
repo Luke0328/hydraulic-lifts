@@ -17,31 +17,38 @@ define( require => {
 
   class InputLiftNode extends LiftNode {
 
-    constructor( lift, initialCenterY, modelViewTransform, options ) {
+    constructor( inputLift, initialCenterY, modelViewTransform, options ) {
 
       options = { ...options };
 
-      super( lift, initialCenterY, modelViewTransform, options );
+      super( inputLift, initialCenterY, modelViewTransform, options );
 
+      // @public {VectorNode} - represents the force exerted on the lift, initialized at 0
       this.forceVector = new VectorNode( Vector.ZERO, Vector.ZERO, { fill: 'green' } );
-
       this.addChild( this.forceVector );
 
       /**
        * Create a Multilink to update the appearance of the Lift. Observe when following properties change:
-       * - lift.radiusProperty - updates the width of liftRectangle to match the width of the lift
-       * - this.centerYProperty - updates the y-coordinates of the liftRectangle
+       * - inputLift.radiusProperty - updates the width of liftRectangle to match the width of the lift
+       * - inputLift.forceProperty - updates the y-coordinates of the liftRectangle and the length of the forceVector
+       * based on the force
        */
-      this.updateLiftNodeMultilink = new Multilink( [ lift.radiusProperty, this.centerYProperty ], () => {
-        this.updateLiftNode( lift, modelViewTransform );
+      this.updateLiftNodeMultilink = new Multilink( [ inputLift.radiusProperty, inputLift.forceProperty ], () => {
+        this.updateLiftNode( inputLift, modelViewTransform );
       } );
     }
 
-    updateLiftNode( lift, modelViewTransform ) {
+    updateLiftNode( inputLift, modelViewTransform ) {
 
-      this.liftRectangle.width = modelViewTransform.modelToViewDeltaX( lift.radius * 2 );
+      this.liftRectangle.width = modelViewTransform.modelToViewDeltaX( inputLift.radius * 2 );
 
-      this.liftRectangle.y = this.centerYProperty.value - modelViewTransform.modelToViewY( lift.force * 50 );
+      this.liftRectangle.y = this.centerYProperty.value - modelViewTransform.modelToViewY( inputLift.force * 5 );
+
+      const end = new Vector( modelViewTransform.modelToViewX( inputLift.centerX ), this.liftRectangle.y );
+
+      const start = end.copy().add( new Vector( 0, modelViewTransform.modelToViewDeltaY( inputLift.force * 3 ) ) );
+
+      this.forceVector.set( start, end );
     }
   }
 
