@@ -10,9 +10,10 @@ define( require => {
   'use strict';
 
   // modules
+  const Bounds = require( 'SIM_CORE/util/Bounds' );
   const ContainerNode = require( 'HYDRAULIC_LIFTS/view/ContainerNode' );
   const ControlPanel = require( 'HYDRAULIC_LIFTS/view/ControlPanel' );
-  const HydraulicLiftsModel = require( 'HYDRAULIC_LIFTS/model/HydraulicLiftsModel' );
+  // const HydraulicLiftsModel = require( 'HYDRAULIC_LIFTS/model/HydraulicLiftsModel' );
   const ModelViewTransform = require( 'SIM_CORE/util/ModelViewTransform' );
   const ScreenView = require( 'SIM_CORE/scenery/ScreenView' );
 
@@ -45,7 +46,7 @@ define( require => {
       const containerNode = new ContainerNode( hydraulicLiftsModel, modelViewTransform );
 
       // Create the Control Panel
-      const controlPanel = new ControlPanel();
+      const controlPanel = new ControlPanel( hydraulicLiftsModel.inputLift, hydraulicLiftsModel.outputLift );
 
       // Render the children in the correct z-layering
       this.setChildren( [

@@ -39,7 +39,7 @@ define( require => {
 
       super( initialCenterX, options );
 
-      this.radiusRange = new Range( 5, 10 ); //in meters
+      this.radiusRange = new Range( 5, 10 ); // in meters
 
       this.inputLift = inputLift;
 

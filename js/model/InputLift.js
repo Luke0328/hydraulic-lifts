@@ -27,7 +27,7 @@ define( require => {
 
       super( initialCenterX, options );
 
-      this.radiusRange = new Range( 1, 5 ); //in meters
+      this.radiusRange = new Range( 1, 5 ); // in meters
 
       this.forceRange = new Range( 0, 10 ); // in newtons
     }

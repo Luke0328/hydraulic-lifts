@@ -13,7 +13,6 @@ define( require => {
   // modules
   // const assert = require( 'SIM_CORE/util/assert' );
   const InputLiftNode = require( 'HYDRAULIC_LIFTS/view/InputLiftNode' );
-  const LiftNode = require( 'HYDRAULIC_LIFTS/view/LiftNode' );
   const Multilink = require( 'SIM_CORE/util/Multilink' );
   const OutputLiftNode = require( 'HYDRAULIC_LIFTS/view/OutputLiftNode' );
   // const Property = require( 'SIM_CORE/util/Property' );

@@ -16,7 +16,7 @@ define( require => {
 
   class ControlPanel extends SVGNode {
 
-    constructor( inputLift, ouputLift, options ) {
+    constructor( inputLift, outputLift, options ) {
       options = {
         width: 200,
         height: 300,
@@ -32,19 +32,19 @@ define( require => {
         stroke: 'black',
         fill: 'rgb( 211, 211, 211 )',
         strokeWidth: '1'
-       } );
+      } );
 
       // Create the slider for the input force
       const inputForceSlider = new SliderNode( inputLift.forceRange, inputLift.forceProperty, {
         rightLabel: '10',
         leftLabel: '0'
-       } );
+      } );
 
       // Create the slider for the input radius
       const inputRadiusSlider = new SliderNode( inputLift.radiusRange, inputLift.radiusProperty, {
         rightLabel: '1',
         leftLabel: '5'
-       } );
+      } );
 
       // Create the slider for the output radius
       const outputRadiusSlider = new SliderNode( outputLift.radiusRange, outputLift.radiusProperty, {
