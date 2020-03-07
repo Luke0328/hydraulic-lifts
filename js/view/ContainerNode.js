@@ -12,8 +12,10 @@ define( require => {
 
   // modules
   // const assert = require( 'SIM_CORE/util/assert' );
+  const InputLiftNode = require( 'HYDRAULIC_LIFTS/view/InputLiftNode' );
   const LiftNode = require( 'HYDRAULIC_LIFTS/view/LiftNode' );
   const Multilink = require( 'SIM_CORE/util/Multilink' );
+  const OutputLiftNode = require( 'HYDRAULIC_LIFTS/view/OutputLiftNode' );
   // const Property = require( 'SIM_CORE/util/Property' );
   const Rectangle = require( 'SIM_CORE/scenery/Rectangle' );
   const SVGNode = require( 'SIM_CORE/scenery/SVGNode' );
@@ -21,7 +23,7 @@ define( require => {
   // constants
   const INITIAL_INPUT_CENTER_Y = 300;
   const INITIAL_OUTPUT_CENTER_Y = 800;
-  const OPENING_GAP = 0.05;
+  const OPENING_GAP = 10;
 
   class ContainerNode extends SVGNode {
 
@@ -37,10 +39,10 @@ define( require => {
       super( options );
 
       // Create the input lift node
-      const inputLiftNode = new LiftNode( container.inputLift, INITIAL_INPUT_CENTER_Y, modelViewTransform );
+      const inputLiftNode = new InputLiftNode( container.inputLift, INITIAL_INPUT_CENTER_Y, modelViewTransform );
 
       // Create the output lift node
-      const outputLiftNode = new LiftNode( container.outputLift, INITIAL_OUTPUT_CENTER_Y, modelViewTransform );
+      const outputLiftNode = new OutputLiftNode( container.outputLift, INITIAL_OUTPUT_CENTER_Y, modelViewTransform );
 
       // Create the container center rectangle
       const containerCenterRectangle = new Rectangle( {
@@ -73,13 +75,13 @@ define( require => {
 
       /**
        * Create a Multilink to update the appearances of the openings. Observe when following properties change:
-       * -
-       *
+       * - container.inputLift.radiusProperty - updates the width of the input opening
+       * - container.outputLift.radiusProperty - updates the width of the output opening
        */
       new Multilink( [ container.inputLift.radiusProperty, container.outputLift.radiusProperty ],
         ( inputRadius, outputRadius ) => {
-        this.containerInputOpening.width = 2 * ( inputRadius + OPENING_GAP );
-        this.containerOutputOpening.width = 2 * ( outputRadius + OPENING_GAP );
+        this.containerInputOpening.width = ( inputRadius + OPENING_GAP ) * 2;
+        this.containerOutputOpening.width = ( outputRadius + OPENING_GAP ) * 2;
       } );
 
       // Render the children in the correct z-layering

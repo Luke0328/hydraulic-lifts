@@ -16,7 +16,7 @@ define( require => {
 
   class ControlPanel extends SVGNode {
 
-    constructor( options ) {
+    constructor( inputLift, ouputLift, options ) {
       options = {
         width: 200,
         height: 300,
@@ -35,13 +35,22 @@ define( require => {
        } );
 
       // Create the slider for the input force
-      const inputForceSlider = new SliderNode();
+      const inputForceSlider = new SliderNode( inputLift.forceRange, inputLift.forceProperty, {
+        rightLabel: '10',
+        leftLabel: '0'
+       } );
 
       // Create the slider for the input radius
-      const inputRadiusSlider = new SliderNode();
+      const inputRadiusSlider = new SliderNode( inputLift.radiusRange, inputLift.radiusProperty, {
+        rightLabel: '1',
+        leftLabel: '5'
+       } );
 
       // Create the slider for the output radius
-      const outputRadiusSlider = new SliderNode();
+      const outputRadiusSlider = new SliderNode( outputLift.radiusRange, outputLift.radiusProperty, {
+        rightLabel: '5',
+        leftLabel: '10'
+      } );
 
       // Render the children in the correct z-layering
       this.setchildren( [

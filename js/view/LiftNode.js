@@ -23,8 +23,8 @@ define( require => {
       options = {
         x: lift.centerX,
         y: initialCenterY,
-        width: lift.radius * 2,
-        height: 1,
+        width: modelViewTransform.modelToViewDeltaX( lift.radius * 2 ),
+        height: 50,
         fill: 'red',
 
         // rewrite options such that it overrides the defaults above if provided.

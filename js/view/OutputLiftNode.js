@@ -29,7 +29,7 @@ define( require => {
 
       /**
        * Create a Multilink to update the appearance of the Lift. Observe when following properties change:
-       * - lift.radiusProperty - updates the width of liftRectangle to match the width of the lift
+       * - outputLift.radiusProperty - updates the width of liftRectangle to match the width of the lift
        * - outputLift.forceProperty - updates the y-coordinates of the liftRectangle and the length of the forceVector
        * based on the force
        */

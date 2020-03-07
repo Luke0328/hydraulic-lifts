@@ -17,6 +17,8 @@ define( require => {
   // modules
   const Lift = require( 'HYDRAULIC_LIFTS/model/Lift' );
   const Multilink = require( 'SIM_CORE/util/Multilink' );
+  const Range = require( 'SIM_CORE/util/Range' );
+
 
   class OutputLift extends Lift {
 
@@ -29,13 +31,15 @@ define( require => {
 
       options = {
 
-        initialRadius: 10, // {number} - initial surface radius of Ouput Lift, in Meters
+        initialRadius: 5, // {number} - initial surface radius of Ouput Lift, in Meters
 
         // rewrite options such that it overrides the defaults above if provided.
         ...options
       };
 
       super( initialCenterX, options );
+
+      this.radiusRange = new Range( 5, 10 ); //in meters
 
       this.inputLift = inputLift;
 
