@@ -57,7 +57,7 @@ define( require => {
       // Create the container's input opening rectangle
       const containerInputOpening = new Rectangle( {
         width: ( container.inputLift.radius + OPENING_GAP ) * 2,
-        height: 350,
+        height: 400,
         stroke: options.stroke,
         fill: options.fill,
         strokewidth: options.strokewidth
@@ -66,7 +66,7 @@ define( require => {
       // Create the container's output opening rectangle
       const containerOutputOpening = new Rectangle( {
         width: ( container.outputLift.radius + OPENING_GAP ) * 2,
-        height: 350,
+        height: 400,
         stroke: options.stroke,
         fill: options.fill,
         strokewidth: options.strokewidth

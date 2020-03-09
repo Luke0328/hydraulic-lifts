@@ -16,20 +16,14 @@ define( require => {
 
   class HydraulicLiftsScreen extends Screen {
 
-    /**
-     * @param {Tandem} tandem
-     */
-    constructor( tandem ) {
+    constructor() {
 
-      const options = {
+      super( {
         name: 'Hydraulic Lifts',
-
-        style: {
-          background: 'rgb( 255, 250, 227 )'
-        }
-      };
-
-      super( () => new HydraulicLiftsModel(), model => new HydraulicLiftsScreenView( model ), options );
+        background: 'rgb( 255, 250, 227 )',
+        model: HydraulicLiftsModel,
+        view: HydraulicLiftsScreenView
+      } );
     }
   }
 
