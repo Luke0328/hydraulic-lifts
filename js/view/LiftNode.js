@@ -14,9 +14,9 @@ define( require => {
   // const Lift = require( 'HYDRAULIC_LIFTS/model/Lift' );
   const Property = require( 'SIM_CORE/util/Property' );
   const Rectangle = require( 'SIM_CORE/scenery/Rectangle' );
-  const SVGNode = require( 'SIM_CORE/scenery/SVGNode' );
+  const Node = require( 'SIM_CORE/scenery/Node' );
 
-  class LiftNode extends SVGNode {
+  class LiftNode extends Node {
 
     constructor( lift, initialCenterY, modelViewTransform, options ) {
 

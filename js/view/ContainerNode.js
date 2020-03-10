@@ -17,14 +17,14 @@ define( require => {
   const OutputLiftNode = require( 'HYDRAULIC_LIFTS/view/OutputLiftNode' );
   // const Property = require( 'SIM_CORE/util/Property' );
   const Rectangle = require( 'SIM_CORE/scenery/Rectangle' );
-  const SVGNode = require( 'SIM_CORE/scenery/SVGNode' );
+  const Node = require( 'SIM_CORE/scenery/Node' );
 
   // constants
   const INITIAL_INPUT_CENTER_Y = 300;
   const INITIAL_OUTPUT_CENTER_Y = 800;
   const OPENING_GAP = 10;
 
-  class ContainerNode extends SVGNode {
+  class ContainerNode extends Node {
 
     constructor( container, modelViewTransform, options ) {
 

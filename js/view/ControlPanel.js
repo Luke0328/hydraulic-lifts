@@ -12,9 +12,9 @@ define( require => {
 
   const Rectangle = require( 'SIM_CORE/scenery/Rectangle' );
   const SliderNode = require( 'SIM_CORE/scenery/SliderNode' );
-  const SVGNode = require( 'SIM_CORE/scenery/SVGNode' );
+  const Node = require( 'SIM_CORE/scenery/Node' );
 
-  class ControlPanel extends SVGNode {
+  class ControlPanel extends Node {
 
     constructor( inputLift, outputLift, options ) {
       options = {
