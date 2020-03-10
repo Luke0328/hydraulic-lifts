@@ -10,16 +10,20 @@
 define( require => {
   'use strict';
 
-  const Rectangle = require( 'SIM_CORE/scenery/Rectangle' );
-  const SliderNode = require( 'SIM_CORE/scenery/SliderNode' );
+  // modules
+  const HydraulicLiftsSlider = require( 'HYDRAULIC_LIFTS/view/HydraulicLiftsSlider' );
   const Node = require( 'SIM_CORE/scenery/Node' );
+  const Rectangle = require( 'SIM_CORE/scenery/Rectangle' );
 
   class ControlPanel extends Node {
 
     constructor( inputLift, outputLift, options ) {
+
       options = {
         width: 200,
         height: 300,
+        fontSize: 15,
+        padding: 10,
         ...options
       };
       super( options );
@@ -35,21 +39,30 @@ define( require => {
       } );
 
       // Create the slider for the input force
-      const inputForceSlider = new SliderNode( inputLift.forceRange, inputLift.forceProperty, {
+      const inputForceSlider = new HydraulicLiftsSlider( inputLift.forceRange, inputLift.forceProperty, {
+        controlPanelWidth: options.width,
+        labelText: 'Input Force',
         rightLabel: '10',
-        leftLabel: '0'
+        leftLabel: '0',
+        numberDisplayUnit: 'N'
       } );
 
       // Create the slider for the input radius
-      const inputRadiusSlider = new SliderNode( inputLift.radiusRange, inputLift.radiusProperty, {
+      const inputRadiusSlider = new HydraulicLiftsSlider( inputLift.radiusRange, inputLift.radiusProperty, {
+        controlPanelWidth: options.width,
+        labelText: 'Input Radius',
         rightLabel: '1',
-        leftLabel: '5'
+        leftLabel: '5',
+        numberDisplayUnit: 'N'
       } );
 
       // Create the slider for the output radius
-      const outputRadiusSlider = new SliderNode( outputLift.radiusRange, outputLift.radiusProperty, {
+      const outputRadiusSlider = new HydraulicLiftsSlider( outputLift.radiusRange, outputLift.radiusProperty, {
+        controlPanelWidth: options.width,
+        labelText: 'Output Radius',
         rightLabel: '5',
-        leftLabel: '10'
+        leftLabel: '10',
+        numberDisplayUnit: 'N'
       } );
 
       // Render the children in the correct z-layering
@@ -58,7 +71,7 @@ define( require => {
         inputForceSlider,
         inputRadiusSlider,
         outputRadiusSlider
-       ] );
+      ] );
     }
   }
 

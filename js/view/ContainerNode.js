@@ -14,10 +14,10 @@ define( require => {
   // const assert = require( 'SIM_CORE/util/assert' );
   const InputLiftNode = require( 'HYDRAULIC_LIFTS/view/InputLiftNode' );
   const Multilink = require( 'SIM_CORE/util/Multilink' );
+  const Node = require( 'SIM_CORE/scenery/Node' );
   const OutputLiftNode = require( 'HYDRAULIC_LIFTS/view/OutputLiftNode' );
   // const Property = require( 'SIM_CORE/util/Property' );
   const Rectangle = require( 'SIM_CORE/scenery/Rectangle' );
-  const Node = require( 'SIM_CORE/scenery/Node' );
 
   // constants
   const INITIAL_INPUT_CENTER_Y = 300;

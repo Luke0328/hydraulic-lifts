@@ -12,9 +12,9 @@ define( require => {
   // modules
   // const assert = require( 'SIM_CORE/util/assert' );
   // const Lift = require( 'HYDRAULIC_LIFTS/model/Lift' );
+  const Node = require( 'SIM_CORE/scenery/Node' );
   const Property = require( 'SIM_CORE/util/Property' );
   const Rectangle = require( 'SIM_CORE/scenery/Rectangle' );
-  const Node = require( 'SIM_CORE/scenery/Node' );
 
   class LiftNode extends Node {
 
