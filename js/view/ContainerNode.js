@@ -52,7 +52,7 @@ define( require => {
         stroke: options.stroke,
         fill: options.fill,
         strokewidth: options.strokewidth
-       } );
+      } );
 
       // Create the container's input opening rectangle
       const containerInputOpening = new Rectangle( {
@@ -90,8 +90,9 @@ define( require => {
         containerOutputOpening,
         inputLiftNode,
         outputLiftNode
-        ] );
+      ] );
     }
   }
+
   return ContainerNode;
 } );

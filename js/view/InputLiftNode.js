@@ -33,12 +33,12 @@ define( require => {
        * - inputLift.forceProperty - updates the y-coordinates of the liftRectangle and the length of the forceVector
        * based on the force
        */
-      this.updateLiftNodeMultilink = new Multilink( [ inputLift.radiusProperty, inputLift.forceProperty ], () => {
-        this.updateLiftNode( inputLift, modelViewTransform );
+      this.updateInputiftNodeMultilink = new Multilink( [ inputLift.radiusProperty, inputLift.forceProperty ], () => {
+        this.updateInputLiftNode( inputLift, modelViewTransform );
       } );
     }
 
-    updateLiftNode( inputLift, modelViewTransform ) {
+    updateInputLiftNode( inputLift, modelViewTransform ) {
 
       this.liftRectangle.width = modelViewTransform.modelToViewDeltaX( inputLift.radius * 2 );
 
