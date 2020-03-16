@@ -20,6 +20,6 @@
   },
   "dependencies": {
     "requirejs": "^2.3.6",
-    "sim-core": "0.0.0-dev.27"
+    "sim-core": "0.0.0-dev.30"
   }
 }

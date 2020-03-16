@@ -24,6 +24,7 @@ define( require => {
         model: HydraulicLiftsModel,
         view: HydraulicLiftsScreenView
       } );
+
     }
   }
 

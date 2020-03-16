@@ -11,10 +11,8 @@ define( require => {
   'use strict';
 
   // modules
-  // const assert = require( 'SIM_CORE/util/assert' );
   const InputLift = require( 'HYDRAULIC_LIFTS/model/InputLift' );
   const OutputLift = require( 'HYDRAULIC_LIFTS/model/OutputLift' );
-  // const Property = require( 'SIM_CORE/util/Property' );
   const Vector = require( 'SIM_CORE/util/Vector' );
 
   // constants
@@ -34,6 +32,7 @@ define( require => {
 
       // @public (read-only) containerCenterPosition - Center position of the container (constant at (0,0))
       this.containerCenterPosition = CONTAINER_CENTER_POSITION;
+
     }
 
     /**

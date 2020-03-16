@@ -11,12 +11,10 @@ define( require => {
   'use strict';
 
   // modules
-  // const assert = require( 'SIM_CORE/util/assert' );
   const InputLiftNode = require( 'HYDRAULIC_LIFTS/view/InputLiftNode' );
   const Multilink = require( 'SIM_CORE/util/Multilink' );
   const Node = require( 'SIM_CORE/scenery/Node' );
   const OutputLiftNode = require( 'HYDRAULIC_LIFTS/view/OutputLiftNode' );
-  // const Property = require( 'SIM_CORE/util/Property' );
   const Rectangle = require( 'SIM_CORE/scenery/Rectangle' );
 
   // constants
@@ -44,29 +42,29 @@ define( require => {
       const outputLiftNode = new OutputLiftNode( container.outputLift, INITIAL_OUTPUT_CENTER_Y, modelViewTransform );
 
       // Create the container center rectangle
-      const containerCenterRectangle = new Rectangle( {
-        x: container.containerCenter.x,
-        y: container.containerCenter.y,
-        width: 400,
-        height: 250,
+      const containerCenterRectangle = new Rectangle( 400, 250, {
+        centerX: modelViewTransform.modelToViewX( container.containerCenter.x ),
+        centerY: modelViewTransform.modelToViewY( container.containerCenter.y ),
         stroke: options.stroke,
         fill: options.fill,
         strokewidth: options.strokewidth
       } );
 
       // Create the container's input opening rectangle
-      const containerInputOpening = new Rectangle( {
-        width: ( container.inputLift.radius + OPENING_GAP ) * 2,
-        height: 400,
+      const containerInputOpening = new Rectangle(
+        ( modelViewTransform.modelToViewDeltaX( container.inputLift.radius ) + OPENING_GAP ) * 2,
+        400, {
+        centerX: modelViewTransform.modelToViewX( container.inputLift.centerX ),
         stroke: options.stroke,
         fill: options.fill,
         strokewidth: options.strokewidth
       } );
 
       // Create the container's output opening rectangle
-      const containerOutputOpening = new Rectangle( {
-        width: ( container.outputLift.radius + OPENING_GAP ) * 2,
-        height: 400,
+      const containerOutputOpening = new Rectangle(
+        ( modelViewTransform.modelToViewDeltaX( container.outputLift.radius ) + OPENING_GAP ) * 2,
+        400, {
+        centerX: modelViewTransform.modelToViewX( container.outputLift.centerX ),
         stroke: options.stroke,
         fill: options.fill,
         strokewidth: options.strokewidth
@@ -79,8 +77,8 @@ define( require => {
        */
       new Multilink( [ container.inputLift.radiusProperty, container.outputLift.radiusProperty ],
         ( inputRadius, outputRadius ) => {
-        this.containerInputOpening.width = ( inputRadius + OPENING_GAP ) * 2;
-        this.containerOutputOpening.width = ( outputRadius + OPENING_GAP ) * 2;
+        containerInputOpening.width = ( modelViewTransform.modelToViewDeltaX( inputRadius ) + OPENING_GAP ) * 2;
+        containerOutputOpening.width = ( modelViewTransform.modelToViewDeltaX( outputRadius ) + OPENING_GAP ) * 2;
       } );
 
       // Render the children in the correct z-layering

@@ -18,7 +18,7 @@ define( require => {
 
     /**
      * @param {number} initialCenterX - center x-coordinate for the Input Lift
-     * @param {object} [options] - controls Output Lift properties
+     * @param {object} [options] - controls Input Lift properties
      */
     constructor( initialCenterX, options ) {
 
@@ -31,6 +31,17 @@ define( require => {
 
       this.forceRange = new Range( 0, 10 ); // in newtons
     }
+
+    // Convenience Methods
+    /**
+     * Gets the x-coordinate of the Lift's center
+     * @public
+     * @returns {number} - in meters
+     */
+    get centerX() {
+      return this.centerXProperty.value;
+    }
+
   }
 
   return InputLift;

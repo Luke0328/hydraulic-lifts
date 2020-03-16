@@ -10,8 +10,6 @@ define( require => {
   'use strict';
 
   // modules
-  // const assert = require( 'SIM_CORE/util/assert' );
-  // const Lift = require( 'HYDRAULIC_LIFTS/model/Lift' );
   const Node = require( 'SIM_CORE/scenery/Node' );
   const Property = require( 'SIM_CORE/util/Property' );
   const Rectangle = require( 'SIM_CORE/scenery/Rectangle' );
@@ -21,9 +19,6 @@ define( require => {
     constructor( lift, initialCenterY, modelViewTransform, options ) {
 
       options = {
-        x: lift.centerX,
-        y: initialCenterY,
-        width: modelViewTransform.modelToViewDeltaX( lift.radius * 2 ),
         height: 50,
         fill: 'red',
 
@@ -35,11 +30,10 @@ define( require => {
 
       this.centerYProperty = new Property( initialCenterY, { type: 'number' } );
 
-      this.liftRectangle = new Rectangle( {
-        x: options.x,
-        y: options.y,
-        width: options.width,
-        height: options.height,
+      this.liftRectangle = new Rectangle( modelViewTransform.modelToViewDeltaX( lift.radius * 2 ),
+        options.height, {
+        centerX: modelViewTransform.modelToViewX( lift.centerX ),
+        centerY: initialCenterY,
         fill: options.fill
       } );
 
