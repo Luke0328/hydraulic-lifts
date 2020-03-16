@@ -5,7 +5,7 @@
  * @author Luke Pan <curly0328@gmail.com>
  */
 
- define( require => {
+define( require => {
   'use strict';
 
   // modules

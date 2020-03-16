@@ -33,7 +33,8 @@ define( require => {
        * - outputLift.forceProperty - updates the y-coordinates of the liftRectangle and the length of the forceVector
        * based on the force
        */
-      this.updateOutputLiftNodeMultilink = new Multilink( [ outputLift.radiusProperty, outputLift.forceProperty ], () => {
+      this.updateOutputLiftNodeMultilink = new Multilink( [ outputLift.radiusProperty, outputLift.forceProperty ],
+      () => {
         this.updateOutputLiftNode( outputLift, modelViewTransform );
       } );
     }

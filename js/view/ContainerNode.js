@@ -18,8 +18,7 @@ define( require => {
   const Rectangle = require( 'SIM_CORE/scenery/Rectangle' );
 
   // constants
-  const INITIAL_INPUT_CENTER_Y = 300;
-  const INITIAL_OUTPUT_CENTER_Y = 800;
+  const INITIAL_CENTER_Y = 500;
   const OPENING_GAP = 10;
 
   class ContainerNode extends Node {
@@ -29,25 +28,24 @@ define( require => {
       options = {
         stroke: 'black',
         fill: 'blue',
-        strokewidth: 2,
+        strokeWidth: 2,
         ...options
       };
 
       super( options );
 
       // Create the input lift node
-      const inputLiftNode = new InputLiftNode( container.inputLift, INITIAL_INPUT_CENTER_Y, modelViewTransform );
+      const inputLiftNode = new InputLiftNode( container.inputLift, INITIAL_CENTER_Y, modelViewTransform );
 
       // Create the output lift node
-      const outputLiftNode = new OutputLiftNode( container.outputLift, INITIAL_OUTPUT_CENTER_Y, modelViewTransform );
+      const outputLiftNode = new OutputLiftNode( container.outputLift, INITIAL_CENTER_Y, modelViewTransform );
 
       // Create the container center rectangle
       const containerCenterRectangle = new Rectangle( 400, 250, {
-        centerX: modelViewTransform.modelToViewX( container.containerCenter.x ),
-        centerY: modelViewTransform.modelToViewY( container.containerCenter.y ),
+        center: modelViewTransform.modelToViewPoint( container.containerCenterPosition ),
         stroke: options.stroke,
         fill: options.fill,
-        strokewidth: options.strokewidth
+        strokeWidth: options.strokeWidth
       } );
 
       // Create the container's input opening rectangle
@@ -57,7 +55,7 @@ define( require => {
         centerX: modelViewTransform.modelToViewX( container.inputLift.centerX ),
         stroke: options.stroke,
         fill: options.fill,
-        strokewidth: options.strokewidth
+        strokeWidth: options.strokeWidth
       } );
 
       // Create the container's output opening rectangle
@@ -67,7 +65,7 @@ define( require => {
         centerX: modelViewTransform.modelToViewX( container.outputLift.centerX ),
         stroke: options.stroke,
         fill: options.fill,
-        strokewidth: options.strokewidth
+        strokeWidth: options.strokeWidth
       } );
 
       /**

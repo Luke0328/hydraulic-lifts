@@ -7,19 +7,19 @@
  * @author Luke Pan <curly0328@gmail.com>
  */
 
- require.config( {
+require.config( {
 
-    deps: [ 'hydraulic-lifts-main' ],
+  deps: [ 'hydraulic-lifts-main' ],
 
-    paths: {
+  paths: {
 
-      // Sim Core plugins
-      image: '../node_modules/sim-core/src/core-internal/image-plugin',
-      text: '../node_modules/sim-core/src/core-internal/text-plugin',
+    // Sim Core plugins
+    image: '../node_modules/sim-core/src/core-internal/image-plugin',
+    text: '../node_modules/sim-core/src/core-internal/text-plugin',
 
-      SIM_CORE: '../node_modules/sim-core/src',
-      REPOSITORY: '..',
-      HYDRAULIC_LIFTS: '.',
-      IMAGES: '../images'
+    SIM_CORE: '../node_modules/sim-core/src',
+    REPOSITORY: '..',
+    HYDRAULIC_LIFTS: '.',
+    IMAGES: '../images'
   }
 } );
