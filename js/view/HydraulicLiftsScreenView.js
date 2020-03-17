@@ -34,8 +34,8 @@ define( require => {
       const viewBounds = new Bounds(
         SCREEN_VIEW_X_MARGIN,
         SCREEN_VIEW_Y_MARGIN,
-        SCREEN_VIEW_X_MARGIN + 40 * MODEL_TO_VIEW_SCALE,
-        SCREEN_VIEW_Y_MARGIN + 20 * MODEL_TO_VIEW_SCALE
+        SCREEN_VIEW_X_MARGIN + modelBounds.width * MODEL_TO_VIEW_SCALE,
+        SCREEN_VIEW_Y_MARGIN + modelBounds.height * MODEL_TO_VIEW_SCALE
       );
 
       // Create the ModelViewTransform from the model and view bounds
