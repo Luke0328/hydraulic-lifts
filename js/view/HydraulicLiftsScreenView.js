@@ -19,7 +19,7 @@ define( require => {
   // constants
   const SCREEN_VIEW_X_MARGIN = 60;
   const SCREEN_VIEW_Y_MARGIN = 40;
-  const MODEL_TO_VIEW_SCALE = 100;
+  const MODEL_TO_VIEW_SCALE = 20;
 
   class HydraulicLiftsScreenView extends ScreenView {
 
@@ -28,9 +28,9 @@ define( require => {
       super();
 
       // Create the model bounds (in meter coordinates)
-      const modelBounds = new Bounds( -20, -10, 20, 10 );
+      const modelBounds = new Bounds( -20, -15, 20, 15 );
 
-      // Create the view bounds (100 view units = one meter)
+      // Create the view bounds
       const viewBounds = new Bounds(
         SCREEN_VIEW_X_MARGIN,
         SCREEN_VIEW_Y_MARGIN,

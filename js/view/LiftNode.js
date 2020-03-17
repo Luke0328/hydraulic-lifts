@@ -19,7 +19,7 @@ define( require => {
     constructor( lift, initialCenterY, modelViewTransform, options ) {
 
       options = {
-        height: 50,
+        height: 30,
         fill: 'red',
 
         // rewrite options such that it overrides the defaults above if provided.

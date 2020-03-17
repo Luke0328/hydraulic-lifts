@@ -43,7 +43,7 @@ define( require => {
 
       this.liftRectangle.width = modelViewTransform.modelToViewDeltaX( outputLift.radius * 2 );
 
-      this.liftRectangle.centerY = this.centerYProperty.value + modelViewTransform.modelToViewY( outputLift.force * 5 );
+      this.liftRectangle.centerY = this.centerYProperty.value + outputLift.force * 5;
 
       const start = new Vector( modelViewTransform.modelToViewX( outputLift.centerX ), this.liftRectangle.centerY );
 

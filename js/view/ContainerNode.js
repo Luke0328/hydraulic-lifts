@@ -18,7 +18,8 @@ define( require => {
   const Rectangle = require( 'SIM_CORE/scenery/Rectangle' );
 
   // constants
-  const INITIAL_CENTER_Y = 500;
+  const INITIAL_INPUT_CENTER_Y = 230;
+  const INITIAL_OUTPUT_CENTER_Y = 330;
   const OPENING_GAP = 10;
 
   class ContainerNode extends Node {
@@ -28,20 +29,20 @@ define( require => {
       options = {
         stroke: 'black',
         fill: 'blue',
-        strokeWidth: 2,
+        strokeWidth: 1.5,
         ...options
       };
 
       super( options );
 
       // Create the input lift node
-      const inputLiftNode = new InputLiftNode( container.inputLift, INITIAL_CENTER_Y, modelViewTransform );
+      const inputLiftNode = new InputLiftNode( container.inputLift, INITIAL_INPUT_CENTER_Y, modelViewTransform );
 
       // Create the output lift node
-      const outputLiftNode = new OutputLiftNode( container.outputLift, INITIAL_CENTER_Y, modelViewTransform );
+      const outputLiftNode = new OutputLiftNode( container.outputLift, INITIAL_OUTPUT_CENTER_Y, modelViewTransform );
 
       // Create the container center rectangle
-      const containerCenterRectangle = new Rectangle( 400, 250, {
+      const containerCenterRectangle = new Rectangle( 200, 150, {
         center: modelViewTransform.modelToViewPoint( container.containerCenterPosition ),
         stroke: options.stroke,
         fill: options.fill,
@@ -51,8 +52,9 @@ define( require => {
       // Create the container's input opening rectangle
       const containerInputOpening = new Rectangle(
         ( modelViewTransform.modelToViewDeltaX( container.inputLift.radius ) + OPENING_GAP ) * 2,
-        400, {
+        230, {
         centerX: modelViewTransform.modelToViewX( container.inputLift.centerX ),
+        centerY: modelViewTransform.modelToViewY( container.containerCenterPosition.y ),
         stroke: options.stroke,
         fill: options.fill,
         strokeWidth: options.strokeWidth
@@ -61,8 +63,9 @@ define( require => {
       // Create the container's output opening rectangle
       const containerOutputOpening = new Rectangle(
         ( modelViewTransform.modelToViewDeltaX( container.outputLift.radius ) + OPENING_GAP ) * 2,
-        400, {
+        230, {
         centerX: modelViewTransform.modelToViewX( container.outputLift.centerX ),
+        centerY: modelViewTransform.modelToViewY( container.containerCenterPosition.y ),
         stroke: options.stroke,
         fill: options.fill,
         strokeWidth: options.strokeWidth
