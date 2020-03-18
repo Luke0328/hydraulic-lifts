@@ -13,7 +13,7 @@ define( require => {
   const LiftNode = require( 'HYDRAULIC_LIFTS/view/LiftNode' );
   const Multilink = require( 'SIM_CORE/util/Multilink' );
   const Vector = require( 'SIM_CORE/util/Vector' );
-  // const VectorNode = require( 'SIM_CORE/scenery/VectorNode' );
+  const Arrow = require( 'SIM_CORE/scenery/Arrow' );
 
   class OutputLiftNode extends LiftNode {
 
@@ -23,14 +23,14 @@ define( require => {
 
       super( outputLift, initialCenterY, modelViewTransform, options );
 
-      // // @public {VectorNode} - represents the force exerted by the lift, initialized at 0
-      // this.forceVector = new VectorNode( Vector.ZERO, Vector.ZERO, { fill: 'green' } );
-      // this.addChild( this.forceVector );
+      // @public {Arrow} - represents the force exerted by the lift, initialized at 0
+      this.forceArrow = new Arrow( 0, 0, 0, 0, { fill: 'green' } );
+      this.addChild( this.forceArrow );
 
       /**
        * Create a Multilink to update the appearance of the Lift. Observe when following properties change:
        * - outputLift.radiusProperty - updates the width of liftRectangle to match the width of the lift
-       * - outputLift.forceProperty - updates the y-coordinates of the liftRectangle and the length of the forceVector
+       * - outputLift.forceProperty - updates the y-coordinates of the liftRectangle and the length of the forceArrow
        * based on the force
        */
       this.updateOutputLiftNodeMultilink = new Multilink( [ outputLift.radiusProperty, outputLift.forceProperty ],
@@ -45,11 +45,13 @@ define( require => {
 
       this.liftRectangle.centerY = this.centerYProperty.value + outputLift.force * 5;
 
-      const start = new Vector( modelViewTransform.modelToViewX( outputLift.centerX ), this.liftRectangle.centerY );
+      const tail = new Vector( modelViewTransform.modelToViewX( outputLift.centerX ), this.liftRectangle.centerY );
 
-      const end = start.copy().add( new Vector( 0, modelViewTransform.modelToViewDeltaY( outputLift.force * 3 ) ) );
+      const tip = tail.copy().add( new Vector( 0, modelViewTransform.modelToViewDeltaY( outputLift.force * 3 ) ) );
 
-      // this.forceVector.set( start, end );
+      this.forceArrow.tail.set( tail );
+
+      this.forceArrow.tip.set( tip );
     }
   }
 

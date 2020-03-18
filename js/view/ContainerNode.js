@@ -18,8 +18,8 @@ define( require => {
   const Rectangle = require( 'SIM_CORE/scenery/Rectangle' );
 
   // constants
-  const INITIAL_INPUT_CENTER_Y = 230;
-  const INITIAL_OUTPUT_CENTER_Y = 330;
+  const INITIAL_INPUT_CENTER_Y = 235;
+  const INITIAL_OUTPUT_CENTER_Y = 335;
   const OPENING_GAP = 10;
 
   class ContainerNode extends Node {
@@ -42,7 +42,7 @@ define( require => {
       const outputLiftNode = new OutputLiftNode( container.outputLift, INITIAL_OUTPUT_CENTER_Y, modelViewTransform );
 
       // Create the container center rectangle
-      const containerCenterRectangle = new Rectangle( 200, 150, {
+      const containerCenterRectangle = new Rectangle( 300, 150, {
         center: modelViewTransform.modelToViewPoint( container.containerCenterPosition ),
         stroke: options.stroke,
         fill: options.fill,

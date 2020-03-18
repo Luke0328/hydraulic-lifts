@@ -29,13 +29,13 @@ define( require => {
       super( options );
 
       // Create the background rectangle
-      const background = new Rectangle( {
-        width: options.width,
-        height: options.height,
+      const background = new Rectangle( options.width, options.height, {
         cornerRadius: 5,
         stroke: 'black',
         fill: 'rgb( 211, 211, 211 )',
-        strokeWidth: '1'
+        strokeWidth: 1,
+        left: 60,
+        top: 40
       } );
 
       // Create the slider for the input force
@@ -44,7 +44,10 @@ define( require => {
         labelText: 'Input Force',
         rightLabel: '10',
         leftLabel: '0',
-        numberDisplayUnit: 'N'
+        numberDisplayUnit: 'N',
+        padding: options.padding,
+        sliderCenterX: background.left + options.width / 2,
+        sliderCenterY: background.top + options.height / 3 - 3 * options.padding
       } );
 
       // Create the slider for the input radius
@@ -53,7 +56,10 @@ define( require => {
         labelText: 'Input Radius',
         rightLabel: '1',
         leftLabel: '5',
-        numberDisplayUnit: 'N'
+        numberDisplayUnit: 'm',
+        padding: options.padding,
+        sliderCenterX: background.left + options.width / 2,
+        sliderCenterY: background.top + options.height * 2 / 3 - 3 * options.padding
       } );
 
       // Create the slider for the output radius
@@ -62,11 +68,14 @@ define( require => {
         labelText: 'Output Radius',
         rightLabel: '5',
         leftLabel: '10',
-        numberDisplayUnit: 'N'
+        numberDisplayUnit: 'm',
+        padding: options.padding,
+        sliderCenterX: background.left + options.width / 2,
+        sliderCenterY: background.top + options.height - 3 * options.padding
       } );
 
       // Render the children in the correct z-layering
-      this.setchildren( [
+      this.setChildren( [
         background,
         inputForceSlider,
         inputRadiusSlider,

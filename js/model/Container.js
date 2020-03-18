@@ -16,8 +16,8 @@ define( require => {
   const Vector = require( 'SIM_CORE/util/Vector' );
 
   // constants
-  const INITIAL_INPUT_LIFT_CENTER_X = -5;
-  const INITIAL_OUTPUT_LIFT_CENTER_X = 10;
+  const INITIAL_INPUT_LIFT_CENTER_X = -8;
+  const INITIAL_OUTPUT_LIFT_CENTER_X = 8;
   const CONTAINER_CENTER_POSITION = new Vector( 0, 0 );
 
   class Container {
