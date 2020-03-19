@@ -45,7 +45,9 @@ define( require => {
       const containerNode = new ContainerNode( hydraulicLiftsModel.container, modelViewTransform );
 
       // Create the Control Panel
-      const controlPanel = new ControlPanel( hydraulicLiftsModel.container.inputLift, hydraulicLiftsModel.container.outputLift );
+      const controlPanel = new ControlPanel( hydraulicLiftsModel.container.inputLift,
+        hydraulicLiftsModel.container.outputLift
+      );
 
       // Render the children in the correct z-layering
       this.setChildren( [

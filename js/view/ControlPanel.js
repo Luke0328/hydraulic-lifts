@@ -20,7 +20,7 @@ define( require => {
     constructor( inputLift, outputLift, options ) {
 
       options = {
-        width: 200,
+        width: 210,
         height: 300,
         fontSize: 15,
         padding: 10,

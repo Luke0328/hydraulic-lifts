@@ -10,10 +10,10 @@ define( require => {
   'use strict';
 
   // modules
+  const Arrow = require( 'SIM_CORE/scenery/Arrow' );
   const LiftNode = require( 'HYDRAULIC_LIFTS/view/LiftNode' );
   const Multilink = require( 'SIM_CORE/util/Multilink' );
   const Vector = require( 'SIM_CORE/util/Vector' );
-  const Arrow = require( 'SIM_CORE/scenery/Arrow' );
 
   class OutputLiftNode extends LiftNode {
 
@@ -23,35 +23,32 @@ define( require => {
 
       super( outputLift, initialCenterY, modelViewTransform, options );
 
-      // @public {Arrow} - represents the force exerted by the lift, initialized at 0
-      this.forceArrow = new Arrow( 0, 0, 0, 0, { fill: 'green' } );
-      this.addChild( this.forceArrow );
+      this.outputLift = outputLift;
 
       /**
        * Create a Multilink to update the appearance of the Lift. Observe when following properties change:
-       * - outputLift.radiusProperty - updates the width of liftRectangle to match the width of the lift
-       * - outputLift.forceProperty - updates the y-coordinates of the liftRectangle and the length of the forceArrow
+       * - this.outputLift.radiusProperty - updates the width of liftRectangle to match the width of the lift
+       * - this.outputLift.forceProperty - updates the y-coordinates of the liftRectangle and the length of the forceArrow
        * based on the force
        */
-      this.updateOutputLiftNodeMultilink = new Multilink( [ outputLift.radiusProperty, outputLift.forceProperty ],
-      () => {
-        this.updateOutputLiftNode( outputLift, modelViewTransform );
+      new Multilink( [ this.outputLift.radiusProperty, this.outputLift.forceProperty ], () => {
+        this.updateOutputLiftNode( this.outputLift, modelViewTransform );
       } );
     }
 
-    updateOutputLiftNode( outputLift, modelViewTransform ) {
+    updateOutputLiftNode( lift, modelViewTransform ) {
 
-      this.liftRectangle.width = modelViewTransform.modelToViewDeltaX( outputLift.radius * 2 );
+      this.liftRectangle.width = modelViewTransform.modelToViewDeltaX( lift.radius * 2 );
 
-      this.liftRectangle.centerY = this.centerYProperty.value + outputLift.force * 5;
+      this.liftRectangle.centerY = this.liftCenterY - lift.force / 3;
 
-      const tail = new Vector( modelViewTransform.modelToViewX( outputLift.centerX ), this.liftRectangle.centerY );
+      const tail = this.liftRectangle.center;
 
-      const tip = tail.copy().add( new Vector( 0, modelViewTransform.modelToViewDeltaY( outputLift.force * 3 ) ) );
+      const tip = tail.copy().subtract( new Vector( 0, modelViewTransform.modelToViewDeltaY( lift.force ) ) );
 
-      this.forceArrow.tail.set( tail );
+      this.forceArrow.tail = tail;
 
-      this.forceArrow.tip.set( tip );
+      this.forceArrow.tip = tip;
     }
   }
 

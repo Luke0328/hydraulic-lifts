@@ -10,8 +10,8 @@ define( require => {
   'use strict';
 
   // modules
+  const Arrow = require( 'SIM_CORE/scenery/Arrow' );
   const Node = require( 'SIM_CORE/scenery/Node' );
-  const Property = require( 'SIM_CORE/util/Property' );
   const Rectangle = require( 'SIM_CORE/scenery/Rectangle' );
 
   class LiftNode extends Node {
@@ -19,7 +19,7 @@ define( require => {
     constructor( lift, initialCenterY, modelViewTransform, options ) {
 
       options = {
-        height: 30,
+        height: 20,
         fill: 'red',
 
         // rewrite options such that it overrides the defaults above if provided.
@@ -28,7 +28,7 @@ define( require => {
 
       super( options );
 
-      this.centerYProperty = new Property( initialCenterY, { type: 'number' } );
+      this.liftCenterY = initialCenterY;
 
       this.liftRectangle = new Rectangle( modelViewTransform.modelToViewDeltaX( lift.radius * 2 ),
         options.height, {
@@ -36,8 +36,11 @@ define( require => {
         centerY: initialCenterY,
         fill: options.fill
       } );
-
       this.addChild( this.liftRectangle );
+
+      // @public {Arrow} - represents the force exerted on or by the lift, initialized at 0
+      this.forceArrow = new Arrow( 0, 0, 0, 0, { fill: 'green' } );
+      this.addChild( this.forceArrow );
 
     }
 

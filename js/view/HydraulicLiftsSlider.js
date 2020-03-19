@@ -33,7 +33,7 @@ define( require => {
         fontSize: 15,
         padding: 0,
 
-        numberDisplaySize: new Vector( 32, 15 ),
+        numberDisplaySize: new Vector( 65, 30 ),
         numberDisplayDecimalPlaces: 2,
         numberDisplayUnit: '',
 
@@ -47,21 +47,21 @@ define( require => {
         fill: 'white',
         stroke: 'rgb( 150, 150, 150 )',
         strokeWidth: 0.5,
-        centerX: options.sliderCenterX + options.controlPanelWidth / 2 - options.padding - options.numberDisplaySize.x / 2,
+        right: options.sliderCenterX + options.controlPanelWidth / 2 - options.padding,
         centerY: options.sliderCenterY - options.numberDisplaySize.y - 4,
         cornerRadius: 1
       } );
       const numberDisplayText = new Text( '', {
         fontSize: options.fontSize,
-        centerX: numberDisplay.centerX - numberDisplay.width / 2,
-        centerY: numberDisplay.centerY - numberDisplay.height / 2,
+        centerX: numberDisplay.left + numberDisplay.width / 5 - 1,
+        centerY: numberDisplay.top + numberDisplay.height / 5 + 2
       } );
 
       // Create the text label
       const label = new Text( options.labelText, {
         fontSize: options.fontSize,
         left: options.sliderCenterX - options.controlPanelWidth / 2 + options.padding,
-        centerY: numberDisplay.centerY,
+        centerY: numberDisplay.centerY + 4
       } );
 
       // Create the slider

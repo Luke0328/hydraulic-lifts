@@ -26,7 +26,6 @@ define( require => {
   'use strict';
 
   // modules
-  // const assert = require( 'SIM_CORE/util/assert' );
   const Property = require( 'SIM_CORE/util/Property' );
   // const Vector = require( 'SIM_CORE/util/Vector' );
 
