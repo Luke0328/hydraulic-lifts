@@ -29,7 +29,7 @@ define( require => {
 
       this.radiusRange = new Range( 1, 3 ); // in meters
 
-      this.forceRange = new Range( 0, 10 ); // in newtons
+      this.forceRange = new Range( 0, 5 ); // in newtons
     }
 
     // Convenience Methods

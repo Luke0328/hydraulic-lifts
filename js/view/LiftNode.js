@@ -38,7 +38,12 @@ define( require => {
       } );
 
       // @public {Arrow} - represents the force exerted on or by the lift, initialized at 0
-      this.forceArrow = new Arrow( 0, 0, 0, 0, { fill: 'green' } );
+      this.forceArrow = new Arrow( 0, 0, 0, 0, {
+        fill: 'green',
+        // headHeight: 100,
+        headWidth: 20,
+        tailWidth: 12
+      } );
 
       // Render the children in the correct z-layering
       this.setChildren( [ this.liftRectangle, this.forceArrow ] );

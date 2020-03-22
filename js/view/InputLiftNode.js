@@ -10,7 +10,6 @@ define( require => {
   'use strict';
 
   // modules
-  const Arrow = require( 'SIM_CORE/scenery/Arrow' );
   const LiftNode = require( 'HYDRAULIC_LIFTS/view/LiftNode' );
   const Multilink = require( 'SIM_CORE/util/Multilink' );
   const Vector = require( 'SIM_CORE/util/Vector' );
@@ -28,8 +27,8 @@ define( require => {
       /**
        * Create a Multilink to update the appearance of the Lift. Observe when following properties change:
        * - this.inputLift.radiusProperty - updates the width of liftRectangle to match the width of the lift
-       * - this.inputLift.forceProperty - updates the y-coordinates of the liftRectangle and the length of the forceArrow
-       * based on the force
+       * - this.inputLift.forceProperty - updates the y-coordinates of the liftRectangle and the length of the
+       * forceArrow based on the force
        */
       new Multilink( [ this.inputLift.radiusProperty, this.inputLift.forceProperty ], ( inputRadius, inputForce ) => {
 
@@ -41,11 +40,13 @@ define( require => {
 
         const tip = this.liftRectangle.center;
 
-        const tail = tip.copy().subtract( new Vector( 0, inputForce ) );
+        const tail = tip.copy().subtract( new Vector( 0, inputForce * 30 ) );
 
         this.forceArrow.tail = tail;
 
         this.forceArrow.tip = tip;
+
+        this.forceArrow.headHeight = 18;
 
       } );
     }
