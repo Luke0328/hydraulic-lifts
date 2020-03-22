@@ -78,8 +78,15 @@ define( require => {
        */
       new Multilink( [ container.inputLift.radiusProperty, container.outputLift.radiusProperty ],
         ( inputRadius, outputRadius ) => {
+
         containerInputOpening.width = ( modelViewTransform.modelToViewDeltaX( inputRadius ) + OPENING_GAP ) * 2;
+
+        containerInputOpening.centerX = modelViewTransform.modelToViewX( container.inputLift.centerX );
+
         containerOutputOpening.width = ( modelViewTransform.modelToViewDeltaX( outputRadius ) + OPENING_GAP ) * 2;
+
+        containerOutputOpening.centerX = modelViewTransform.modelToViewX( container.outputLift.centerX );
+
       } );
 
       // Render the children in the correct z-layering

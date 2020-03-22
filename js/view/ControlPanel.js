@@ -34,8 +34,8 @@ define( require => {
         stroke: 'black',
         fill: 'rgb( 211, 211, 211 )',
         strokeWidth: 1,
-        left: 60,
-        top: 40
+        left: 15,
+        top: 10
       } );
 
       // Create the slider for the input force

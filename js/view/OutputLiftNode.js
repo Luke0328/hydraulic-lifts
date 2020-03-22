@@ -31,24 +31,23 @@ define( require => {
        * - this.outputLift.forceProperty - updates the y-coordinates of the liftRectangle and the length of the forceArrow
        * based on the force
        */
-      new Multilink( [ this.outputLift.radiusProperty, this.outputLift.forceProperty ], () => {
-        this.updateOutputLiftNode( this.outputLift, modelViewTransform );
+      new Multilink( [ this.outputLift.radiusProperty, this.outputLift.forceProperty ], ( outputRadius, outputForce ) => {
+
+        this.liftRectangle.width = modelViewTransform.modelToViewDeltaX( outputRadius * 2 );
+
+        this.liftRectangle.centerX = modelViewTransform.modelToViewX( outputLift.centerX );
+
+        this.liftRectangle.centerY = this.liftCenterY - outputForce / 3;
+
+        const tail = this.liftRectangle.center;
+
+        const tip = tail.copy().subtract( new Vector( 0, outputForce ) );
+
+        this.forceArrow.tail = tail;
+
+        this.forceArrow.tip = tip;
+
       } );
-    }
-
-    updateOutputLiftNode( lift, modelViewTransform ) {
-
-      this.liftRectangle.width = modelViewTransform.modelToViewDeltaX( lift.radius * 2 );
-
-      this.liftRectangle.centerY = this.liftCenterY - lift.force / 3;
-
-      const tail = this.liftRectangle.center;
-
-      const tip = tail.copy().subtract( new Vector( 0, modelViewTransform.modelToViewDeltaY( lift.force ) ) );
-
-      this.forceArrow.tail = tail;
-
-      this.forceArrow.tip = tip;
     }
   }
 

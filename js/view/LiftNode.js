@@ -36,12 +36,12 @@ define( require => {
         centerY: initialCenterY,
         fill: options.fill
       } );
-      this.addChild( this.liftRectangle );
 
       // @public {Arrow} - represents the force exerted on or by the lift, initialized at 0
       this.forceArrow = new Arrow( 0, 0, 0, 0, { fill: 'green' } );
-      this.addChild( this.forceArrow );
 
+      // Render the children in the correct z-layering
+      this.setChildren( [ this.liftRectangle, this.forceArrow ] );
     }
 
     dispose() {
