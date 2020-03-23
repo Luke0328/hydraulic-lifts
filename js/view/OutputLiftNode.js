@@ -37,7 +37,13 @@ define( require => {
 
         this.liftRectangle.centerX = modelViewTransform.modelToViewX( outputLift.centerX );
 
+        this.emptyRectangle.width = modelViewTransform.modelToViewDeltaX( outputRadius * 2 );
+
+        this.emptyRectangle.centerX = this.liftRectangle.centerX;
+
         this.liftRectangle.centerY = this.liftCenterY - outputForce / 3;
+
+        this.emptyRectangle.bottom = this.liftRectangle.top;
 
         const tail = this.liftRectangle.center;
 

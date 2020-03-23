@@ -36,17 +36,21 @@ define( require => {
 
         this.liftRectangle.centerX = modelViewTransform.modelToViewX( inputLift.centerX );
 
-        this.liftRectangle.centerY = this.liftCenterY + inputForce * 3;
+        this.emptyRectangle.width = modelViewTransform.modelToViewDeltaX( inputRadius * 2 );
+
+        this.emptyRectangle.centerX = this.liftRectangle.centerX;
+
+        this.liftRectangle.centerY = this.liftCenterY + inputForce * 30;
+
+        this.emptyRectangle.bottom = this.liftRectangle.top;
 
         const tip = this.liftRectangle.center;
 
-        const tail = tip.copy().subtract( new Vector( 0, inputForce * 30 ) );
+        const tail = tip.copy().subtract( new Vector( 0, inputForce * 8 ) );
 
         this.forceArrow.tail = tail;
 
         this.forceArrow.tip = tip;
-
-        this.forceArrow.headHeight = 18;
 
       } );
     }

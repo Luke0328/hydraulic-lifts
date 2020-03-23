@@ -39,7 +39,7 @@ define( require => {
 
       super( initialCenterX, options );
 
-      this.radiusRange = new Range( 5, 10 ); // in meters
+      this.radiusRange = new Range( 5, 7 ); // in meters
 
       this.inputLift = inputLift;
 
@@ -47,11 +47,12 @@ define( require => {
        * Create a Multilink to update the output force. Observe when following properties change:
        *    - this.inputLift.radiusProperty
        *    - this.inputLift.forceProperty
+       *    - this.radiusProperty
        * Calculates the ouput force using the equation given in the introduction documentation.
        */
-      new Multilink( [ this.inputLift.radiusProperty, this.inputLift.forceProperty ],
-        ( inputRadius, inputForce ) => {
-        this.forceProperty.value = Math.pow( this.radius / inputRadius, 2 ) * inputForce;
+      new Multilink( [ this.inputLift.radiusProperty, this.inputLift.forceProperty, this.radiusProperty ],
+        ( inputRadius, inputForce, outputRadius ) => {
+        this.forceProperty.value = Math.pow( outputRadius / inputRadius, 2 ) * inputForce;
       } );
     }
 

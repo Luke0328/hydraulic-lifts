@@ -16,11 +16,13 @@ define( require => {
   const Node = require( 'SIM_CORE/scenery/Node' );
   const OutputLiftNode = require( 'HYDRAULIC_LIFTS/view/OutputLiftNode' );
   const Rectangle = require( 'SIM_CORE/scenery/Rectangle' );
+  const Text = require( 'SIM_CORE/scenery/Text' );
+  const Util = require( 'SIM_CORE/util/Util' );
 
   // constants
   const INITIAL_INPUT_CENTER_Y = 235;
   const INITIAL_OUTPUT_CENTER_Y = 335;
-  const OPENING_GAP = 10;
+  const OPENING_GAP = 1.5;
 
   class ContainerNode extends Node {
 
@@ -29,7 +31,7 @@ define( require => {
       options = {
         stroke: 'black',
         fill: 'blue',
-        strokeWidth: 1.5,
+        strokeWidth: 2.5,
         ...options
       };
 
@@ -71,6 +73,25 @@ define( require => {
         strokeWidth: options.strokeWidth
       } );
 
+      // Create the output force number display
+      const numberDisplay = new Rectangle( 75, 30, {
+        fill: 'white',
+        stroke: 'rgb( 150, 150, 150 )',
+        strokeWidth: 0.5,
+        centerX: modelViewTransform.modelToViewX( container.outputLift.centerX ),
+        top: modelViewTransform.modelToViewY( container.containerCenterPosition.y ) + 10,
+        cornerRadius: 1
+      } );
+      const numberDisplayText = new Text( '', {
+        fontSize: 15,
+        centerX: numberDisplay.left + numberDisplay.width / 5 - 2,
+        centerY: numberDisplay.top + numberDisplay.height / 5 + 2
+      } );
+
+      container.outputLift.forceProperty.link( value => {
+        numberDisplayText.setText( `${ Util.toFixed( value, 1 ) } ${ 'N' }` );
+      } );
+
       /**
        * Create a Multilink to update the appearances of the openings. Observe when following properties change:
        * - container.inputLift.radiusProperty - updates the width of the input opening
@@ -94,6 +115,8 @@ define( require => {
         containerCenterRectangle,
         containerInputOpening,
         containerOutputOpening,
+        numberDisplay,
+        numberDisplayText,
         inputLiftNode,
         outputLiftNode
       ] );
