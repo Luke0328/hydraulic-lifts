@@ -11,6 +11,7 @@ define( require => {
   'use strict';
 
   // modules
+  const ContainerPath = require( 'HYDRAULIC_LIFTS/view/ContainerPath' );
   const InputLiftNode = require( 'HYDRAULIC_LIFTS/view/InputLiftNode' );
   const Multilink = require( 'SIM_CORE/util/Multilink' );
   const Node = require( 'SIM_CORE/scenery/Node' );
@@ -18,10 +19,11 @@ define( require => {
   const Rectangle = require( 'SIM_CORE/scenery/Rectangle' );
   const Text = require( 'SIM_CORE/scenery/Text' );
   const Util = require( 'SIM_CORE/util/Util' );
+  const Vector = require( 'SIM_CORE/util/Vector' );
 
   // constants
-  const INITIAL_INPUT_CENTER_Y = 235;
-  const INITIAL_OUTPUT_CENTER_Y = 335;
+  const INITIAL_INPUT_CENTER_Y = 220;
+  const INITIAL_OUTPUT_CENTER_Y = 330;
   const OPENING_GAP = 1.5;
 
   class ContainerNode extends Node {
@@ -43,35 +45,17 @@ define( require => {
       // Create the output lift node
       const outputLiftNode = new OutputLiftNode( container.outputLift, INITIAL_OUTPUT_CENTER_Y, modelViewTransform );
 
-      // Create the container center rectangle
-      const containerCenterRectangle = new Rectangle( 300, 150, {
-        center: modelViewTransform.modelToViewPoint( container.containerCenterPosition ),
-        stroke: options.stroke,
-        fill: options.fill,
-        strokeWidth: options.strokeWidth
-      } );
-
-      // Create the container's input opening rectangle
-      const containerInputOpening = new Rectangle(
-        ( modelViewTransform.modelToViewDeltaX( container.inputLift.radius ) + OPENING_GAP ) * 2,
-        230, {
-        centerX: modelViewTransform.modelToViewX( container.inputLift.centerX ),
-        centerY: modelViewTransform.modelToViewY( container.containerCenterPosition.y ),
-        stroke: options.stroke,
-        fill: options.fill,
-        strokeWidth: options.strokeWidth
-      } );
-
-      // Create the container's output opening rectangle
-      const containerOutputOpening = new Rectangle(
-        ( modelViewTransform.modelToViewDeltaX( container.outputLift.radius ) + OPENING_GAP ) * 2,
-        230, {
-        centerX: modelViewTransform.modelToViewX( container.outputLift.centerX ),
-        centerY: modelViewTransform.modelToViewY( container.containerCenterPosition.y ),
-        stroke: options.stroke,
-        fill: options.fill,
-        strokeWidth: options.strokeWidth
-      } );
+      // Create the container path
+      const containerPath = new ContainerPath(
+        new Vector( modelViewTransform.modelToViewX( container.inputLift.centerX ), INITIAL_INPUT_CENTER_Y - 10),
+        modelViewTransform.modelToViewPoint( container.containerCenterPosition ),
+        new Vector( modelViewTransform.modelToViewX( container.outputLift.centerX ), INITIAL_INPUT_CENTER_Y - 10 ),
+        {
+          midHeight: 70,
+          stroke: options.stroke,
+          fill: options.fill,
+          strokeWidth: options.strokeWidth
+        } );
 
       // Create the output force number display
       const numberDisplay = new Rectangle( 75, 30, {
@@ -100,21 +84,18 @@ define( require => {
       new Multilink( [ container.inputLift.radiusProperty, container.outputLift.radiusProperty ],
         ( inputRadius, outputRadius ) => {
 
-        containerInputOpening.width = ( modelViewTransform.modelToViewDeltaX( inputRadius ) + OPENING_GAP ) * 2;
+        containerPath.leftWidth = ( modelViewTransform.modelToViewDeltaX( inputRadius ) + OPENING_GAP ) * 2;
 
-        containerInputOpening.centerX = modelViewTransform.modelToViewX( container.inputLift.centerX );
-
-        containerOutputOpening.width = ( modelViewTransform.modelToViewDeltaX( outputRadius ) + OPENING_GAP ) * 2;
-
-        containerOutputOpening.centerX = modelViewTransform.modelToViewX( container.outputLift.centerX );
+        containerPath.rightWidth = ( modelViewTransform.modelToViewDeltaX( outputRadius ) + OPENING_GAP ) * 2;
 
       } );
 
       // Render the children in the correct z-layering
       this.setChildren( [
-        containerCenterRectangle,
-        containerInputOpening,
-        containerOutputOpening,
+        // containerCenterRectangle,
+        // containerInputOpening,
+        // containerOutputOpening,
+        containerPath,
         numberDisplay,
         numberDisplayText,
         inputLiftNode,

@@ -40,7 +40,7 @@ define( require => {
 
         this.emptyRectangle.centerX = this.liftRectangle.centerX;
 
-        this.liftRectangle.centerY = this.liftCenterY + inputForce * 30;
+        this.liftRectangle.centerY = this.liftCenterY + inputForce * 21.5;
 
         this.emptyRectangle.bottom = this.liftRectangle.top;
 
