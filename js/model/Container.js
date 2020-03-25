@@ -2,7 +2,8 @@
 
 /**
  * Container is the model for the entire container seen in the simulation.
- * The Container object contains two lift objects: an Input Lift and an Output Lift.
+ *
+ * A Container contains an Input Lift, an Output Lift, and a constant center position.
  *
  * @author Luke Pan <curly0328@gmail.com>
  */
@@ -30,7 +31,7 @@ define( require => {
       // @public (read-only) {OutputLift} - Output Lift object
       this.outputLift = new OutputLift( INITIAL_OUTPUT_LIFT_CENTER_X, this.inputLift );
 
-      // @public (read-only) containerCenterPosition - Center position of the container (constant at (2,0))
+      // @public (read-only) {Vector} - Center position of the container
       this.containerCenterPosition = CONTAINER_CENTER_POSITION;
 
     }

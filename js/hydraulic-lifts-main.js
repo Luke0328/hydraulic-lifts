@@ -1,6 +1,6 @@
 // Copyright © 2020 Luke Pan. All rights reserved.
 
- /* Main Entry point for the 'Hydraulic Lifts' sim.
+ /* Main Entry point for the 'Hydraulic Lifts' simulation.
  *
  * @author Luke Pan <curly0328@gmail.com>
  */

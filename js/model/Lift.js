@@ -46,16 +46,16 @@ define( require => {
         ...options
       };
 
-      // @public (read-only) centerXProperty - Property of the x-coordinate of the Lift center
+      // @public (read-only) {Property.<number>} - Property of the x-coordinate of the Lift center
       this.centerXProperty = new Property( initialCenterX, { type: 'number' } );
 
-      // @public (read-only) forceProperty - Property of the force on or from the Lift
+      // @public (read-only) {Property.<number>} - Property of the force on or from the Lift
       this.forceProperty = new Property( options.initialForce, {
         type: 'number',
         isValidValue: value => value >= 0 // force must be greater than or equal to 0
       } );
 
-      // @public (read-only) radiusProperty - Property of the surface radius of the Lift
+      // @public (read-only) {Property.<number>} - Property of the surface radius of the Lift
       this.radiusProperty = new Property( options.initialRadius, {
         type: 'number',
         isValidValue: value => value > 0 // radius must be greater than 0
@@ -84,10 +84,10 @@ define( require => {
     /**
      * Sets the x-coordinate of the Lift's center
      * @public
-     * @param {number} center - in meters
+     * @param {number} centerX - in meters
      */
-    set centerX( center ) {
-      this.centerXProperty.value = center;
+    set centerX( centerX ) {
+      this.centerXProperty.value = centerX;
     }
 
     /**
@@ -125,6 +125,7 @@ define( require => {
     set radius( radius ) {
       this.radiusProperty.value = radius;
     }
+
   }
 
   return Lift;

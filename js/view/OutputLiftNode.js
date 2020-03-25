@@ -18,8 +18,15 @@ define( require => {
 
   class OutputLiftNode extends LiftNode {
 
+    /**
+     * @param {OutputLift} outputLift - outputLift object
+     * @param {number} initialCenterY - initial center y-coordinate
+     * @param {ModelViewTransform} modelViewTransform - coordinate transform between model and view
+     * @param {object} [options] - controls OutputLiftNode properties
+     */
     constructor( outputLift, initialCenterY, modelViewTransform, options ) {
 
+      // rewrite options such that it overrides the defaults above if provided.
       options = { ...options };
 
       super( outputLift, initialCenterY, modelViewTransform, options );
@@ -29,9 +36,10 @@ define( require => {
 
       /**
        * Create a Multilink to update the appearance of the Lift. Observe when following properties change:
-       * - this.outputLift.radiusProperty - updates the width of liftRectangle to match the width of the lift
-       * - this.outputLift.forceProperty - updates the y-coordinates of the liftRectangle and the length of the
-       * forceArrow based on the force
+       * - this.outputLift.radiusProperty - updates the width of liftRectangle and emptyRectangle to match
+       * the width of the lift
+       * - this.outputLift.forceProperty - updates the y-coordinates of the liftRectangle and emptyRectangle
+       * and the length of the forceArrow based on the force
        */
       new Multilink( [ this.outputLift.radiusProperty, this.outputLift.forceProperty ],
         ( outputRadius, outputForce ) => {

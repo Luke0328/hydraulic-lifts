@@ -29,10 +29,10 @@ define( require => {
 
       super( initialCenterX, options );
 
-      // @public (read-only) radiusRange - Range of radii available for the slider in the control panel, in Meters
+      // @public (read-only) {Range} - Range of radii available for the slider in the control panel, in Meters
       this.radiusRange = new Range( 1, 3 );
 
-      // @public (read-only) radiusRange - Range of forces available for the slider in the control panel, in Newtons
+      // @public (read-only) {Range} - Range of forces available for the slider in the control panel, in Newtons
       this.forceRange = new Range( 0, 5 );
 
     }

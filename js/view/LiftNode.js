@@ -3,6 +3,8 @@
 /**
  * Lift Node is the general view for a Lift object in the simulation.
  *
+ * A Lift Node consists of a liftRectangle, emptyRectangle, and a forceVector.
+ *
  * @author Luke Pan <curly0328@gmail.com>
  */
 
@@ -16,11 +18,17 @@ define( require => {
 
   class LiftNode extends Node {
 
+    /**
+     * @param {Lift} lift - lift object
+     * @param {number} initialCenterY - initial center y-coordinate
+     * @param {ModelViewTransform} modelViewTransform - coordinate transform between model and view
+     * @param {object} [options] - controls LiftNode properties
+     */
     constructor( lift, initialCenterY, modelViewTransform, options ) {
 
       options = {
-        height: 20,
-        fill: 'red',
+        height: 20, // {number} - height of a LiftNode
+        fill: 'red', // {Color|string} - fill color
 
         // rewrite options such that it overrides the defaults above if provided.
         ...options
@@ -28,6 +36,7 @@ define( require => {
 
       super( options );
 
+      // (public) (read-only) {number} - center y-coordinate of the LiftNode
       this.liftCenterY = initialCenterY;
 
       // @public {Rectangle} liftRectangle - represents a lift, initialized with a width of 0
@@ -54,11 +63,12 @@ define( require => {
       } );
 
       // Render the children in the correct z-layering
-      this.setChildren( [ this.liftRectangle, this.emptyRectangle, this.forceArrow ] );
-    }
+      this.setChildren( [
+        this.liftRectangle,
+        this.emptyRectangle,
+        this.forceArrow
+      ] );
 
-    dispose() {
-      this.updateLiftNodeMultilink.dispose();
     }
   }
 

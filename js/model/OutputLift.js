@@ -41,10 +41,10 @@ define( require => {
 
       super( initialCenterX, options );
 
-      // @public (read-only) radiusRange - Range of radii available for the slider in the control panel, in Meters
+      // @public (read-only) {Range} - Range of radii available for the slider in the control panel, in Meters
       this.radiusRange = new Range( 5, 7 );
 
-      // @public (read-only) inputLift - the Input Lift object passed into the constructor
+      // @public (read-only) {InputLift} - the Input Lift object passed into the constructor
       this.inputLift = inputLift;
 
       /**
@@ -58,8 +58,8 @@ define( require => {
         ( inputRadius, inputForce, outputRadius ) => {
         this.forceProperty.value = Math.pow( outputRadius / inputRadius, 2 ) * inputForce;
       } );
-    }
 
+    }
   }
 
   return OutputLift;

@@ -2,7 +2,9 @@
 
 /**
  * View for the container in the simulation.
- * ContainerNode creates two LiftNode's.
+ *
+ * ContainerNode creates two LiftNode's, a ContainerPath, a number Display.
+ * ContainerNode also creates a multilink to update the appearances of the left and right openings of the ContainerPath.
  *
  * @author Luke Pan <curly0328@gmail.com>
  */
@@ -28,12 +30,17 @@ define( require => {
 
   class ContainerNode extends Node {
 
+    /**
+     * @param {Container} container - Container object
+     * @param {ModelViewTransform} modelViewTransform - coordinate transform between model and view
+     * @param {object} [options] - controls ContainerNode properties
+     */
     constructor( container, modelViewTransform, options ) {
 
       options = {
-        stroke: 'black',
-        fill: 'blue',
-        strokeWidth: 2.5,
+        fill: 'blue', // {Color|string} - fill color
+        stroke: 'black', // {Color|string} - stroke color
+        strokeWidth: 2.5, // {number} - width of the stroke
 
         // rewrite options such that it overrides the defaults above if provided.
         ...options
@@ -103,6 +110,7 @@ define( require => {
         inputLiftNode,
         outputLiftNode
       ] );
+
     }
   }
 

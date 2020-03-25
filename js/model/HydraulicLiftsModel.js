@@ -3,6 +3,8 @@
 /**
  * HydraulicLiftsModel is the top Level model for the Hydraulic Lifts simulation.
  *
+ * HydrualicLiftsModel contains one Container.
+ *
  * @author Luke Pan <curly0328@gmail.com>
  */
 
@@ -16,7 +18,7 @@ define( require => {
 
     constructor() {
 
-      // @public (read-only) container - container object
+      // @public (read-only) {Container} - container object
       this.container = new Container();
 
     }

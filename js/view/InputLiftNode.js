@@ -18,6 +18,12 @@ define( require => {
 
   class InputLiftNode extends LiftNode {
 
+    /**
+     * @param {InputLift} inputLift - inputLift object
+     * @param {number} initialCenterY - initial center y-coordinate
+     * @param {ModelViewTransform} modelViewTransform - coordinate transform between model and view
+     * @param {object} [options] - controls InputLiftNode properties
+     */
     constructor( inputLift, initialCenterY, modelViewTransform, options ) {
 
       // rewrite options such that it overrides the defaults above if provided.
@@ -25,14 +31,15 @@ define( require => {
 
       super( inputLift, initialCenterY, modelViewTransform, options );
 
-      // @public (read-only) inputLift - the Input Lift object passed into the constructor
+      // @public (read-only) {InputLift} - the Input Lift object passed into the constructor
       this.inputLift = inputLift;
 
       /**
        * Create a Multilink to update the appearance of the Lift. Observe when following properties change:
-       * - this.inputLift.radiusProperty - updates the width of liftRectangle to match the width of the lift
-       * - this.inputLift.forceProperty - updates the y-coordinates of the liftRectangle and the length of the
-       * forceArrow based on the force
+       * - this.inputLift.radiusProperty - updates the width of liftRectangle and emptyRectangle to match
+       * the width of the lift
+       * - this.inputLift.forceProperty - updates the y-coordinates of the liftRectangle and emptyRectangle
+       * and the length of the forceArrow based on the force
        */
       new Multilink( [ this.inputLift.radiusProperty, this.inputLift.forceProperty ], ( inputRadius, inputForce ) => {
 

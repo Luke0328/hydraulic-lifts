@@ -50,7 +50,7 @@ define( require => {
      * Sets the width of the left opening
      * @public
      *
-     * @param {number} leftWidth
+     * @param {number} leftWidth - in view coordinates
      */
     set leftWidth( leftWidth ) {
       if ( leftWidth === this._leftWidth ) return;
@@ -62,7 +62,7 @@ define( require => {
      * Sets the width of the right opening
      * @public
      *
-     * @param {number} rightWidth
+     * @param {number} rightWidth - in view coordinates
      */
     set rightWidth( rightWidth ) {
       if ( rightWidth === this._rightWidth ) return;
@@ -93,6 +93,7 @@ define( require => {
       // Passes the updated shape to the super class
       super.shape = containerShape;
     }
+
   }
 
   return ContainerPath;

@@ -23,6 +23,9 @@ define( require => {
 
   class HydraulicLiftsScreenView extends ScreenView {
 
+    /**
+     * @param {HydraulicLiftsModel} hydraulicLiftsModel - top level model for the simulation
+     */
     constructor( hydraulicLiftsModel ) {
 
       super();

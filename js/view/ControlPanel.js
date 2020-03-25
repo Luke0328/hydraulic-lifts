@@ -2,7 +2,8 @@
 
 /**
  * View for the control panel in the simulation.
- * The control panel will contain 3 sliders.
+ *
+ * ControlPanel contains a background rectangle, 3 HydraulicLiftsSlider's, and a reset button.
  *
  * @author Luke Pan <curly0328@gmail.com>
  */
@@ -18,14 +19,18 @@ define( require => {
 
   class ControlPanel extends Node {
 
+    /**
+     * @param {Container} container - Container object
+     * @param {object} [options] - controls ControlPanel properties
+     */
     constructor( container, options ) {
 
       options = {
-        width: 210,
-        height: 300,
-        fontSize: 15,
+        width: 210, // {number} - width of the control panel
+        height: 300, // {number} - height of the control panel
+        fontSize: 15, // {number} - font size for text in the control panel
 
-        padding: 10,
+        padding: 10, // {number} - padding between control panel contents and outline of the background rectangle
 
         // rewrite options such that it overrides the defaults above if provided.
         ...options
