@@ -30,7 +30,7 @@ define( require => {
       // @public (read-only) {OutputLift} - Output Lift object
       this.outputLift = new OutputLift( INITIAL_OUTPUT_LIFT_CENTER_X, this.inputLift );
 
-      // @public (read-only) containerCenterPosition - Center position of the container (constant at (0,0))
+      // @public (read-only) containerCenterPosition - Center position of the container (constant at (2,0))
       this.containerCenterPosition = CONTAINER_CENTER_POSITION;
 
     }

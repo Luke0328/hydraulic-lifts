@@ -3,7 +3,9 @@
 /**
  * OutputLift is the general model for the Output Lift.
  *
- * The output force changes according to the radii of the lifts and the input force.
+ * Extends Lift while adding the following:
+ *  1. A range for the radius used by sliders in the control panel
+ *  2. A multilink to update the output force which changes according to the radii of both lifts and the input force.
  *
  * Note the following equation:
  * - Output Force = (Output Area / Input Area) * Input Force
@@ -39,8 +41,10 @@ define( require => {
 
       super( initialCenterX, options );
 
-      this.radiusRange = new Range( 5, 7 ); // in meters
+      // @public (read-only) radiusRange - Range of radii available for the slider in the control panel, in Meters
+      this.radiusRange = new Range( 5, 7 );
 
+      // @public (read-only) inputLift - the Input Lift object passed into the constructor
       this.inputLift = inputLift;
 
       /**
@@ -48,13 +52,12 @@ define( require => {
        *    - this.inputLift.radiusProperty
        *    - this.inputLift.forceProperty
        *    - this.radiusProperty
-       * Calculates the ouput force using the equation given in the introduction documentation.
+       * Calculates the ouput force using the equation given above in the introduction documentation.
        */
       new Multilink( [ this.inputLift.radiusProperty, this.inputLift.forceProperty, this.radiusProperty ],
         ( inputRadius, inputForce, outputRadius ) => {
         this.forceProperty.value = Math.pow( outputRadius / inputRadius, 2 ) * inputForce;
       } );
-
     }
 
   }

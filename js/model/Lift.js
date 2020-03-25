@@ -27,7 +27,6 @@ define( require => {
 
   // modules
   const Property = require( 'SIM_CORE/util/Property' );
-  // const Vector = require( 'SIM_CORE/util/Vector' );
 
   class Lift {
 

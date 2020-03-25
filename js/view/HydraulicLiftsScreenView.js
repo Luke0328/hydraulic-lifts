@@ -1,7 +1,7 @@
 // Copyright © 2020 Luke Pan. All rights reserved.
 
 /**
- * Top level view for the simulation.
+ * Top level view for the simulation. Creates a modelViewTransform for the simulation.
  *
  * @author Luke Pan <curly0328@gmail.com>
  */

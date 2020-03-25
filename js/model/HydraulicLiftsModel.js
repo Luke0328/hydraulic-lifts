@@ -16,6 +16,7 @@ define( require => {
 
     constructor() {
 
+      // @public (read-only) container - container object
       this.container = new Container();
 
     }

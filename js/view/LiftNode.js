@@ -30,6 +30,7 @@ define( require => {
 
       this.liftCenterY = initialCenterY;
 
+      // @public {Rectangle} liftRectangle - represents a lift, initialized with a width of 0
       this.liftRectangle = new Rectangle( 0,
         options.height, {
         centerX: modelViewTransform.modelToViewX( lift.centerX ),
@@ -37,13 +38,14 @@ define( require => {
         fill: options.fill
       } );
 
+      // @public {Rectangle} emptyRectanlge - created for visual effect, initalized with a width of 0
       this.emptyRectangle = new Rectangle( 0, 155, {
         centerX: this.liftRectangle.centerX,
         bottom: this.liftRectangle.top,
         fill: 'rgb( 255, 250, 227 )'
       } );
 
-      // @public {Arrow} - represents the force exerted on or by the lift, initialized at 0
+      // @public {Arrow} forceArrow - represents the force exerted on or by the lift, initialized at 0
       this.forceArrow = new Arrow( 0, 0, 0, 0, {
         fill: 'green',
         headHeight: 16,

@@ -2,7 +2,9 @@
 
 /**
  * InputLift is the general model for the Input Lift.
- * InputLift is a copy of Lift; is created to mirror OutputLift.
+ *
+ * Extends Lift while adding the following:
+ *  1. Ranges for the radius and force used by sliders in the control panel
  *
  * @author Luke Pan <curly0328@gmail.com>
  */
@@ -27,12 +29,13 @@ define( require => {
 
       super( initialCenterX, options );
 
-      this.radiusRange = new Range( 1, 3 ); // in meters
+      // @public (read-only) radiusRange - Range of radii available for the slider in the control panel, in Meters
+      this.radiusRange = new Range( 1, 3 );
 
-      this.forceRange = new Range( 0, 5 ); // in newtons
+      // @public (read-only) radiusRange - Range of forces available for the slider in the control panel, in Newtons
+      this.forceRange = new Range( 0, 5 );
 
     }
-
   }
 
   return InputLift;

@@ -1,7 +1,9 @@
 // Copyright © 2020 Luke Pan. All rights reserved.
 
 /**
- * OutputLiftNode is the specific view for an output lift.
+ * OutputLiftNode is the specific view for an Output Lift.
+ *
+ * Extends LiftNode but creates a multilink to visually update LiftNode's components.
  *
  * @author Luke Pan <curly0328@gmail.com>
  */
@@ -22,6 +24,7 @@ define( require => {
 
       super( outputLift, initialCenterY, modelViewTransform, options );
 
+      // @public (read-only) outputLift - the Output Lift object passed into the constructor
       this.outputLift = outputLift;
 
       /**
@@ -35,13 +38,14 @@ define( require => {
 
         this.liftRectangle.width = modelViewTransform.modelToViewDeltaX( outputRadius * 2 );
 
+        // Restores the center x-coordinate as changing the width of a Rectangle maintains the top left coordinate
         this.liftRectangle.centerX = modelViewTransform.modelToViewX( outputLift.centerX );
 
         this.emptyRectangle.width = modelViewTransform.modelToViewDeltaX( outputRadius * 2 );
 
         this.emptyRectangle.centerX = this.liftRectangle.centerX;
 
-        this.liftRectangle.centerY = this.liftCenterY - outputForce / 3;
+        this.liftRectangle.centerY = this.liftCenterY - outputForce / 3; // slight adjustment for visual effect
 
         this.emptyRectangle.bottom = this.liftRectangle.top;
 
@@ -54,6 +58,7 @@ define( require => {
         this.forceArrow.tip = tip;
 
       } );
+
     }
   }
 

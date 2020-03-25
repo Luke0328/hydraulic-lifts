@@ -24,7 +24,10 @@ define( require => {
         width: 210,
         height: 300,
         fontSize: 15,
+
         padding: 10,
+
+        // rewrite options such that it overrides the defaults above if provided.
         ...options
       };
       super( options );
@@ -80,7 +83,7 @@ define( require => {
 
       // Create the reset button
       const resetButton = new ResetButton( {
-        listener: container.reset,
+        listener: () => { container.reset(); },
         centerX: background.left + options.width / 2,
         centerY: 350
       } );
@@ -93,6 +96,7 @@ define( require => {
         outputRadiusSlider,
         resetButton
       ] );
+
     }
   }
 

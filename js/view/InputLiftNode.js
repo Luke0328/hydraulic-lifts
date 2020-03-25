@@ -1,7 +1,9 @@
 // Copyright © 2020 Luke Pan. All rights reserved.
 
 /**
- * InputLiftNode is the specific view for an input lift.
+ * InputLiftNode is the specific view for an Input Lift.
+ *
+ * Extends LiftNode but creates a multilink to visually update LiftNode's components.
  *
  * @author Luke Pan <curly0328@gmail.com>
  */
@@ -18,10 +20,12 @@ define( require => {
 
     constructor( inputLift, initialCenterY, modelViewTransform, options ) {
 
+      // rewrite options such that it overrides the defaults above if provided.
       options = { ...options };
 
       super( inputLift, initialCenterY, modelViewTransform, options );
 
+      // @public (read-only) inputLift - the Input Lift object passed into the constructor
       this.inputLift = inputLift;
 
       /**
@@ -34,25 +38,27 @@ define( require => {
 
         this.liftRectangle.width = modelViewTransform.modelToViewDeltaX( inputRadius * 2 );
 
+        // Restores the center x-coordinate as changing the width of a Rectangle maintains the top left coordinate
         this.liftRectangle.centerX = modelViewTransform.modelToViewX( inputLift.centerX );
 
         this.emptyRectangle.width = modelViewTransform.modelToViewDeltaX( inputRadius * 2 );
 
         this.emptyRectangle.centerX = this.liftRectangle.centerX;
 
-        this.liftRectangle.centerY = this.liftCenterY + inputForce * 21.5;
+        this.liftRectangle.centerY = this.liftCenterY + inputForce * 21.5; // slight adjustment for visual effect
 
         this.emptyRectangle.bottom = this.liftRectangle.top;
 
         const tip = this.liftRectangle.center;
 
-        const tail = tip.copy().subtract( new Vector( 0, inputForce * 6 ) );
+        const tail = tip.copy().subtract( new Vector( 0, inputForce * 6 ) ); // slight adjustment for visual effect
 
         this.forceArrow.tail = tail;
 
         this.forceArrow.tip = tip;
 
       } );
+
     }
   }
 
