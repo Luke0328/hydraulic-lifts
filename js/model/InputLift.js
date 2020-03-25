@@ -30,16 +30,7 @@ define( require => {
       this.radiusRange = new Range( 1, 3 ); // in meters
 
       this.forceRange = new Range( 0, 5 ); // in newtons
-    }
 
-    // Convenience Methods
-    /**
-     * Gets the x-coordinate of the Lift's center
-     * @public
-     * @returns {number} - in meters
-     */
-    get centerX() {
-      return this.centerXProperty.value;
     }
 
   }

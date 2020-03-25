@@ -54,16 +54,7 @@ define( require => {
         ( inputRadius, inputForce, outputRadius ) => {
         this.forceProperty.value = Math.pow( outputRadius / inputRadius, 2 ) * inputForce;
       } );
-    }
 
-    // Convenience Methods
-    /**
-     * Gets the x-coordinate of the Lift's center
-     * @public
-     * @returns {number} - in meters
-     */
-    get centerX() {
-      return this.centerXProperty.value;
     }
 
   }

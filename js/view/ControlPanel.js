@@ -14,10 +14,11 @@ define( require => {
   const HydraulicLiftsSlider = require( 'HYDRAULIC_LIFTS/view/HydraulicLiftsSlider' );
   const Node = require( 'SIM_CORE/scenery/Node' );
   const Rectangle = require( 'SIM_CORE/scenery/Rectangle' );
+  const ResetButton = require( 'SIM_CORE/scenery/buttons/ResetButton' );
 
   class ControlPanel extends Node {
 
-    constructor( inputLift, outputLift, options ) {
+    constructor( container, options ) {
 
       options = {
         width: 210,
@@ -35,11 +36,12 @@ define( require => {
         fill: 'rgb( 211, 211, 211 )',
         strokeWidth: 1,
         left: 15,
-        top: 10
+        top: 15
       } );
 
       // Create the slider for the input force
-      const inputForceSlider = new HydraulicLiftsSlider( inputLift.forceRange, inputLift.forceProperty, {
+      const inputForceSlider = new HydraulicLiftsSlider(
+        container.inputLift.forceRange, container.inputLift.forceProperty, {
         controlPanelWidth: options.width,
         labelText: 'Input Force',
         rightLabel: '10',
@@ -51,7 +53,8 @@ define( require => {
       } );
 
       // Create the slider for the input radius
-      const inputRadiusSlider = new HydraulicLiftsSlider( inputLift.radiusRange, inputLift.radiusProperty, {
+      const inputRadiusSlider = new HydraulicLiftsSlider(
+        container.inputLift.radiusRange, container.inputLift.radiusProperty, {
         controlPanelWidth: options.width,
         labelText: 'Input Radius',
         rightLabel: '1',
@@ -63,7 +66,8 @@ define( require => {
       } );
 
       // Create the slider for the output radius
-      const outputRadiusSlider = new HydraulicLiftsSlider( outputLift.radiusRange, outputLift.radiusProperty, {
+      const outputRadiusSlider = new HydraulicLiftsSlider(
+        container.outputLift.radiusRange, container.outputLift.radiusProperty, {
         controlPanelWidth: options.width,
         labelText: 'Output Radius',
         rightLabel: '5',
@@ -74,12 +78,20 @@ define( require => {
         sliderCenterY: background.top + options.height - 3 * options.padding
       } );
 
+      // Create the reset button
+      const resetButton = new ResetButton( {
+        listener: container.reset,
+        centerX: background.left + options.width / 2,
+        centerY: 350
+      } );
+
       // Render the children in the correct z-layering
       this.setChildren( [
         background,
         inputForceSlider,
         inputRadiusSlider,
-        outputRadiusSlider
+        outputRadiusSlider,
+        resetButton
       ] );
     }
   }

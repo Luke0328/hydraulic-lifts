@@ -46,7 +46,7 @@ define( require => {
 
         const tip = this.liftRectangle.center;
 
-        const tail = tip.copy().subtract( new Vector( 0, inputForce * 8 ) );
+        const tail = tip.copy().subtract( new Vector( 0, inputForce * 6 ) );
 
         this.forceArrow.tail = tail;
 

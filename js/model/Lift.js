@@ -68,7 +68,6 @@ define( require => {
      * @public
      */
     reset() {
-      this.centerXProperty.reset();
       this.forceProperty.reset();
       this.radiusProperty.reset();
     }

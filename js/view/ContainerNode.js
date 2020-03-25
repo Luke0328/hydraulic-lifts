@@ -47,7 +47,7 @@ define( require => {
 
       // Create the container path
       const containerPath = new ContainerPath(
-        new Vector( modelViewTransform.modelToViewX( container.inputLift.centerX ), INITIAL_INPUT_CENTER_Y - 10),
+        new Vector( modelViewTransform.modelToViewX( container.inputLift.centerX ), INITIAL_INPUT_CENTER_Y - 10 ),
         modelViewTransform.modelToViewPoint( container.containerCenterPosition ),
         new Vector( modelViewTransform.modelToViewX( container.outputLift.centerX ), INITIAL_INPUT_CENTER_Y - 10 ),
         {

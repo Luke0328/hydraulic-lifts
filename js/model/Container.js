@@ -1,7 +1,7 @@
 // Copyright © 2020 Luke Pan. All rights reserved.
 
 /**
- * Container is the general model for the entire container seen in the simulation.
+ * Container is the model for the entire container seen in the simulation.
  * The Container object contains two lift objects: an Input Lift and an Output Lift.
  *
  * @author Luke Pan <curly0328@gmail.com>
@@ -16,9 +16,9 @@ define( require => {
   const Vector = require( 'SIM_CORE/util/Vector' );
 
   // constants
-  const INITIAL_INPUT_LIFT_CENTER_X = -8;
-  const INITIAL_OUTPUT_LIFT_CENTER_X = 8;
-  const CONTAINER_CENTER_POSITION = new Vector( 0, 0 );
+  const INITIAL_INPUT_LIFT_CENTER_X = -6;
+  const INITIAL_OUTPUT_LIFT_CENTER_X = 10;
+  const CONTAINER_CENTER_POSITION = new Vector( 2, 0 );
 
   class Container {
 
@@ -33,6 +33,15 @@ define( require => {
       // @public (read-only) containerCenterPosition - Center position of the container (constant at (0,0))
       this.containerCenterPosition = CONTAINER_CENTER_POSITION;
 
+    }
+
+    /**
+     * Resets both Lifts
+     * @public
+     */
+    reset() {
+      this.inputLift.reset();
+      this.outputLift.reset();
     }
   }
 
