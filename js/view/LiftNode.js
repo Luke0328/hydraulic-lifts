@@ -47,7 +47,10 @@ define( require => {
         fill: options.fill
       } );
 
-      // @public {Rectangle} emptyRectanlge - created for visual effect, initalized with a width of 0
+      /**
+       * @public {Rectangle} emptyRectangle - created to emulate the effect of water being pushed down by
+       * the lift, initalized with a width of 0
+       **/
       this.emptyRectangle = new Rectangle( 0, 155, {
         centerX: this.liftRectangle.centerX,
         bottom: this.liftRectangle.top,

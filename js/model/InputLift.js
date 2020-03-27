@@ -16,6 +16,10 @@ define( require => {
   const Lift = require( 'HYDRAULIC_LIFTS/model/Lift' );
   const Range = require( 'SIM_CORE/util/Range' );
 
+  // constants
+  const INPUT_FORCE_RANGE = new Range( 0, 5 ); // chosen arbitrarily
+  const INPUT_RADIUS_RANGE = new Range( 1, 3 ); // chosen arbitrarily
+
   class InputLift extends Lift {
 
     /**
@@ -30,10 +34,10 @@ define( require => {
       super( centerX, options );
 
       // @public (read-only) {Range} - Range of radii available for the slider in the control panel, in Meters
-      this.radiusRange = new Range( 1, 3 ); // chosen arbitrarily
+      this.radiusRange = INPUT_RADIUS_RANGE;
 
       // @public (read-only) {Range} - Range of forces available for the slider in the control panel, in Newtons
-      this.forceRange = new Range( 0, 5 ); // chosen arbitrarily
+      this.forceRange = INPUT_FORCE_RANGE;
 
     }
   }

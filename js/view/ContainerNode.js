@@ -25,7 +25,7 @@ define( require => {
 
   // constants
   const INITIAL_INPUT_CENTER_Y = 220; // eyeballed
-  const INITIAL_OUTPUT_CENTER_Y = 330; // eyeballed
+  const INITIAL_OUTPUT_CENTER_Y = 300; // eyeballed
   const OPENING_GAP = 1.5; // eyeballed
 
   class ContainerNode extends Node {
@@ -83,7 +83,8 @@ define( require => {
         centerY: numberDisplay.top + numberDisplay.height / 5 + 2
       } );
 
-      // Link the forceProperty to the text such that the text displays the current force outputted
+      // Link the forceProperty to the text such that the text displays the current force outputted.
+      // This link is never disposed as nothing in the sim is ever destroyed.
       container.outputLift.forceProperty.link( value => {
         numberDisplayText.setText( `${ Util.toFixed( value, 1 ) } ${ 'N' }` );
       } );
@@ -92,6 +93,7 @@ define( require => {
        * Create a Multilink to update the appearances of the openings. Observe when following properties change:
        * - container.inputLift.radiusProperty - updates the left width of the container path
        * - container.outputLift.radiusProperty - updates the right width of the container path
+       * This multilink is never disposed as nothing in the sim is ever destroyed.
        */
       new Multilink( [ container.inputLift.radiusProperty, container.outputLift.radiusProperty ],
         ( inputRadius, outputRadius ) => {

@@ -81,7 +81,8 @@ define( require => {
         centerY: options.sliderCenterY
       } );
 
-      // Link the property to the text such that the text displays the current value
+      // Link the property to the text such that the text displays the current value.
+      // This link is never disposed as nothing in the sim is ever destroyed.
       numberProperty.link( value => {
         numberDisplayText.setText(
           `${ Util.toFixed( value, options.numberDisplayDecimalPlaces ) } ${ options.numberDisplayUnit }`

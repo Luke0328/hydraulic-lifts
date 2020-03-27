@@ -14,12 +14,14 @@ define( require => {
   const ContainerNode = require( 'HYDRAULIC_LIFTS/view/ContainerNode' );
   const ControlPanel = require( 'HYDRAULIC_LIFTS/view/ControlPanel' );
   const ModelViewTransform = require( 'SIM_CORE/util/ModelViewTransform' );
+  const ResetButton = require( 'SIM_CORE/scenery/buttons/ResetButton' );
   const ScreenView = require( 'SIM_CORE/scenery/ScreenView' );
 
   // constants
-  const SCREEN_VIEW_X_MARGIN = 60; // eyeballed
-  const SCREEN_VIEW_Y_MARGIN = 40; // eyeballed
+  const SCREEN_VIEW_X_MARGIN = 15; // eyeballed
+  const SCREEN_VIEW_Y_MARGIN = 10; // eyeballed
   const MODEL_TO_VIEW_SCALE = 20; // eyeballed
+  const CONTROL_PANEL_TO_RESET_BUTTON_MARGIN = 40; // eyeballed
 
   class HydraulicLiftsScreenView extends ScreenView {
 
@@ -30,8 +32,8 @@ define( require => {
 
       super();
 
-      // Create the model bounds (in meter coordinates)
-      const modelBounds = new Bounds( -20, -15, 20, 15 );
+      // Create the model bounds centered around the center of the container
+      const modelBounds = new Bounds( -25, -15, 20, 15 ); // the model bounds are 40 x 30 meters
 
       // Create the view bounds
       const viewBounds = Bounds.rect(
@@ -48,12 +50,23 @@ define( require => {
       const containerNode = new ContainerNode( hydraulicLiftsModel.container, modelViewTransform );
 
       // Create the Control Panel
-      const controlPanel = new ControlPanel( hydraulicLiftsModel.container );
+      const controlPanel = new ControlPanel( hydraulicLiftsModel.container, {
+        left: SCREEN_VIEW_X_MARGIN,
+        top: SCREEN_VIEW_Y_MARGIN
+      } );
+
+      // Create the reset button
+      const resetButton = new ResetButton( {
+        listener: () => { hydraulicLiftsModel.container.reset(); },
+        centerX: controlPanel.centerX,
+        centerY: controlPanel.bottom + CONTROL_PANEL_TO_RESET_BUTTON_MARGIN
+      } );
 
       // Render the children in the correct z-layering
       this.setChildren( [
         containerNode,
-        controlPanel
+        controlPanel,
+        resetButton
       ] );
     }
   }

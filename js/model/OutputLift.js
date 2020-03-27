@@ -21,6 +21,8 @@ define( require => {
   const Multilink = require( 'SIM_CORE/util/Multilink' );
   const Range = require( 'SIM_CORE/util/Range' );
 
+  // constants
+  const OUTPUT_RADIUS_RANGE = new Range( 5, 7 ); // chosen arbitrarily
 
   class OutputLift extends Lift {
 
@@ -42,7 +44,7 @@ define( require => {
       super( centerX, options );
 
       // @public (read-only) {Range} - Range of radii available for the slider in the control panel, in Meters
-      this.radiusRange = new Range( 5, 7 ); // chosen arbitrarily
+      this.radiusRange = OUTPUT_RADIUS_RANGE;
 
       /**
        * Create a Multilink to update the output force. Observe when following properties change:
@@ -50,6 +52,7 @@ define( require => {
        *    - this.inputLift.forceProperty
        *    - this.areaProperty
        * Calculates the ouput force using the equation given above in the introduction documentation.
+       * This multilink is never disposed as nothing in the sim is ever destroyed.
        */
       new Multilink( [ inputLift.areaProperty, inputLift.forceProperty, this.areaProperty ],
         ( inputArea, inputForce, outputArea ) => {

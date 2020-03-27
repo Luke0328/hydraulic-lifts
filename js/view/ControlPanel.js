@@ -3,7 +3,7 @@
 /**
  * View for the control panel in the simulation.
  *
- * ControlPanel contains a background rectangle, three HydraulicLiftsSlider's, and a reset button.
+ * ControlPanel contains a background rectangle and three HydraulicLiftsSlider's.
  *
  * @author Luke Pan <curly0328@gmail.com>
  */
@@ -15,7 +15,6 @@ define( require => {
   const HydraulicLiftsSlider = require( 'HYDRAULIC_LIFTS/view/HydraulicLiftsSlider' );
   const Node = require( 'SIM_CORE/scenery/Node' );
   const Rectangle = require( 'SIM_CORE/scenery/Rectangle' );
-  const ResetButton = require( 'SIM_CORE/scenery/buttons/ResetButton' );
 
   class ControlPanel extends Node {
 
@@ -42,9 +41,7 @@ define( require => {
         cornerRadius: 5,
         stroke: 'black',
         fill: 'rgb( 211, 211, 211 )',
-        strokeWidth: 1,
-        left: 15,
-        top: 15
+        strokeWidth: 1
       } );
 
       // Create the slider for the input force
@@ -86,20 +83,12 @@ define( require => {
         sliderCenterY: background.top + options.height - 3 * options.padding
       } );
 
-      // Create the reset button
-      const resetButton = new ResetButton( {
-        listener: () => { container.reset(); },
-        centerX: background.left + options.width / 2,
-        centerY: 350
-      } );
-
       // Render the children in the correct z-layering
       this.setChildren( [
         background,
         inputForceSlider,
         inputRadiusSlider,
-        outputRadiusSlider,
-        resetButton
+        outputRadiusSlider
       ] );
 
     }

@@ -37,6 +37,7 @@ define( require => {
        * the width of the lift
        * - this.inputLift.forceProperty - updates the y-coordinates of the liftRectangle and emptyRectangle
        * and the length of the forceArrow based on the force
+       * This multilink is never disposed as nothing in the sim is ever destroyed.
        */
       new Multilink( [ inputLift.radiusProperty, inputLift.forceProperty ], ( inputRadius, inputForce ) => {
 
@@ -49,7 +50,11 @@ define( require => {
 
         this.emptyRectangle.centerX = this.liftRectangle.centerX;
 
-        this.liftRectangle.centerY = this.liftCenterY + inputForce * 21.5; // slight adjustment for visual effect
+        /**
+         * Adjust the center y-coordinate such that the liftRectangle reaches the bottom of the container when
+         * 5 N of force are exerted on the ouput lift
+         */
+        this.liftRectangle.centerY = this.liftCenterY + inputForce * 15;
 
         this.emptyRectangle.bottom = this.liftRectangle.top;
 
