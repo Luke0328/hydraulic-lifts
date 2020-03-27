@@ -40,7 +40,7 @@ define( require => {
       const background = new Rectangle( options.width, options.height, {
         cornerRadius: 5,
         stroke: 'black',
-        fill: 'rgb( 211, 211, 211 )',
+        fill: 'rgb( 238, 229, 233 )',
         strokeWidth: 1
       } );
 

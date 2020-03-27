@@ -62,8 +62,6 @@ define( require => {
       // Create the text inside the background rectangle
       const numberDisplayText = new Text( '', {
         fontSize: options.fontSize,
-        centerX: numberDisplay.left + numberDisplay.width / 5 - 1, // slight adjustment for visual effect
-        centerY: numberDisplay.top + numberDisplay.height / 5 + 2 // slight adjustment for visual effect
       } );
 
       // Create the text label for the slider
@@ -87,6 +85,7 @@ define( require => {
         numberDisplayText.setText(
           `${ Util.toFixed( value, options.numberDisplayDecimalPlaces ) } ${ options.numberDisplayUnit }`
         );
+        numberDisplayText.center = numberDisplay.center;
       } );
 
       // Render the children in the correct z-layering

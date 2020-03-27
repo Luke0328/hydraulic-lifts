@@ -17,11 +17,8 @@ define( require => {
   const Vector = require( 'SIM_CORE/util/Vector' );
 
   // constants
-  const INPUT_LIFT_CENTER_X = -8; // eyeballed
-  const OUTPUT_LIFT_CENTER_X = 8; // eyeballed
-
-  // the container's center position is (0,0) in model coordinates
-  const CONTAINER_CENTER_POSITION = new Vector( 0, 0 );
+  const INPUT_LIFT_CENTER_X = -4; // eyeballed
+  const OUTPUT_LIFT_CENTER_X = 12; // eyeballed
 
   class Container {
 
@@ -32,9 +29,6 @@ define( require => {
 
       // @public (read-only) {OutputLift} - Output Lift object
       this.outputLift = new OutputLift( this.inputLift, OUTPUT_LIFT_CENTER_X );
-
-      // @public (read-only) {Vector} - Center position of the container
-      this.containerCenterPosition = CONTAINER_CENTER_POSITION;
 
     }
 

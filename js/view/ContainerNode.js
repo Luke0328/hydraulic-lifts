@@ -24,8 +24,8 @@ define( require => {
   const Vector = require( 'SIM_CORE/util/Vector' );
 
   // constants
-  const INITIAL_INPUT_CENTER_Y = 220; // eyeballed
-  const INITIAL_OUTPUT_CENTER_Y = 300; // eyeballed
+  const INITIAL_INPUT_CENTER_Y = 300; // eyeballed
+  const INITIAL_OUTPUT_CENTER_Y = 380; // eyeballed
   const OPENING_GAP = 1.5; // eyeballed
 
   class ContainerNode extends Node {
@@ -57,7 +57,7 @@ define( require => {
       // Create the container path
       const containerPath = new ContainerPath(
         new Vector( modelViewTransform.modelToViewX( container.inputLift.centerX ), INITIAL_INPUT_CENTER_Y - 10 ),
-        modelViewTransform.modelToViewPoint( container.containerCenterPosition ),
+        modelViewTransform.modelToViewPoint( new Vector( 4, -4 ) ),
         new Vector( modelViewTransform.modelToViewX( container.outputLift.centerX ), INITIAL_INPUT_CENTER_Y - 10 ),
         {
           midHeight: 70,
@@ -72,21 +72,20 @@ define( require => {
         stroke: 'rgb( 150, 150, 150 )',
         strokeWidth: 0.5,
         centerX: modelViewTransform.modelToViewX( container.outputLift.centerX ),
-        top: modelViewTransform.modelToViewY( container.containerCenterPosition.y ) + 10,
+        top: modelViewTransform.modelToViewY( 0 ) + 10,
         cornerRadius: 1
       } );
 
       // Create the text inside the number display rectangle
       const numberDisplayText = new Text( '', {
         fontSize: 15,
-        centerX: numberDisplay.left + numberDisplay.width / 5 - 2,
-        centerY: numberDisplay.top + numberDisplay.height / 5 + 2
       } );
 
       // Link the forceProperty to the text such that the text displays the current force outputted.
       // This link is never disposed as nothing in the sim is ever destroyed.
       container.outputLift.forceProperty.link( value => {
         numberDisplayText.setText( `${ Util.toFixed( value, 1 ) } ${ 'N' }` );
+        numberDisplayText.center = numberDisplay.center;
       } );
 
       /**
