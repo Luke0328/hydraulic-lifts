@@ -19,21 +19,21 @@ define( require => {
   class InputLift extends Lift {
 
     /**
-     * @param {number} initialCenterX - center x-coordinate for the Input Lift
+     * @param {number} centerX - center x-coordinate for the Input Lift
      * @param {object} [options] - controls Input Lift properties
      */
-    constructor( initialCenterX, options ) {
+    constructor( centerX, options ) {
 
       // rewrite options such that it overrides the defaults above if provided.
       options = { ...options };
 
-      super( initialCenterX, options );
+      super( centerX, options );
 
       // @public (read-only) {Range} - Range of radii available for the slider in the control panel, in Meters
-      this.radiusRange = new Range( 1, 3 );
+      this.radiusRange = new Range( 1, 3 ); // chosen arbitrarily
 
       // @public (read-only) {Range} - Range of forces available for the slider in the control panel, in Newtons
-      this.forceRange = new Range( 0, 5 );
+      this.forceRange = new Range( 0, 5 ); // chosen arbitrarily
 
     }
   }

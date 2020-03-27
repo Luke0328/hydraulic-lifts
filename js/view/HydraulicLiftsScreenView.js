@@ -17,9 +17,9 @@ define( require => {
   const ScreenView = require( 'SIM_CORE/scenery/ScreenView' );
 
   // constants
-  const SCREEN_VIEW_X_MARGIN = 60;
-  const SCREEN_VIEW_Y_MARGIN = 40;
-  const MODEL_TO_VIEW_SCALE = 20;
+  const SCREEN_VIEW_X_MARGIN = 60; // eyeballed
+  const SCREEN_VIEW_Y_MARGIN = 40; // eyeballed
+  const MODEL_TO_VIEW_SCALE = 20; // eyeballed
 
   class HydraulicLiftsScreenView extends ScreenView {
 

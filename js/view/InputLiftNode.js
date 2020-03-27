@@ -31,9 +31,6 @@ define( require => {
 
       super( inputLift, initialCenterY, modelViewTransform, options );
 
-      // @public (read-only) {InputLift} - the Input Lift object passed into the constructor
-      this.inputLift = inputLift;
-
       /**
        * Create a Multilink to update the appearance of the Lift. Observe when following properties change:
        * - this.inputLift.radiusProperty - updates the width of liftRectangle and emptyRectangle to match
@@ -41,7 +38,7 @@ define( require => {
        * - this.inputLift.forceProperty - updates the y-coordinates of the liftRectangle and emptyRectangle
        * and the length of the forceArrow based on the force
        */
-      new Multilink( [ this.inputLift.radiusProperty, this.inputLift.forceProperty ], ( inputRadius, inputForce ) => {
+      new Multilink( [ inputLift.radiusProperty, inputLift.forceProperty ], ( inputRadius, inputForce ) => {
 
         this.liftRectangle.width = modelViewTransform.modelToViewDeltaX( inputRadius * 2 );
 

@@ -25,11 +25,11 @@ define( require => {
   class OutputLift extends Lift {
 
     /**
-     * @param {number} initialCenterX - center x-coordinate for the Output Lift
+     * @param {number} centerX - center x-coordinate for the Output Lift
      * @param {InputLift} inputLift - Input Lift object
      * @param {object} [options] - controls Output Lift properties
      */
-    constructor( initialCenterX, inputLift, options ) {
+    constructor( inputLift, centerX, options ) {
 
       options = {
 
@@ -39,24 +39,23 @@ define( require => {
         ...options
       };
 
-      super( initialCenterX, options );
+      super( centerX, options );
 
       // @public (read-only) {Range} - Range of radii available for the slider in the control panel, in Meters
-      this.radiusRange = new Range( 5, 7 );
-
-      // @public (read-only) {InputLift} - the Input Lift object passed into the constructor
-      this.inputLift = inputLift;
+      this.radiusRange = new Range( 5, 7 ); // chosen arbitrarily
 
       /**
        * Create a Multilink to update the output force. Observe when following properties change:
-       *    - this.inputLift.radiusProperty
+       *    - this.inputLift.areaProperty
        *    - this.inputLift.forceProperty
-       *    - this.radiusProperty
+       *    - this.areaProperty
        * Calculates the ouput force using the equation given above in the introduction documentation.
        */
-      new Multilink( [ this.inputLift.radiusProperty, this.inputLift.forceProperty, this.radiusProperty ],
-        ( inputRadius, inputForce, outputRadius ) => {
-        this.forceProperty.value = Math.pow( outputRadius / inputRadius, 2 ) * inputForce;
+      new Multilink( [ inputLift.areaProperty, inputLift.forceProperty, this.areaProperty ],
+        ( inputArea, inputForce, outputArea ) => {
+
+        this.force = outputArea / inputArea * inputForce;
+
       } );
 
     }

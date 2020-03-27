@@ -17,19 +17,19 @@ define( require => {
   const Vector = require( 'SIM_CORE/util/Vector' );
 
   // constants
-  const INITIAL_INPUT_LIFT_CENTER_X = -6;
-  const INITIAL_OUTPUT_LIFT_CENTER_X = 10;
-  const CONTAINER_CENTER_POSITION = new Vector( 2, 0 );
+  const INPUT_LIFT_CENTER_X = -6; // eyeballed
+  const OUTPUT_LIFT_CENTER_X = 10; // eyeballed
+  const CONTAINER_CENTER_POSITION = new Vector( 2, 0 ); // eyeballed
 
   class Container {
 
     constructor() {
 
       // @public (read-only) {InputLift} - Input Lift object
-      this.inputLift = new InputLift( INITIAL_INPUT_LIFT_CENTER_X );
+      this.inputLift = new InputLift( INPUT_LIFT_CENTER_X );
 
       // @public (read-only) {OutputLift} - Output Lift object
-      this.outputLift = new OutputLift( INITIAL_OUTPUT_LIFT_CENTER_X, this.inputLift );
+      this.outputLift = new OutputLift( OUTPUT_LIFT_CENTER_X, this.inputLift );
 
       // @public (read-only) {Vector} - Center position of the container
       this.containerCenterPosition = CONTAINER_CENTER_POSITION;

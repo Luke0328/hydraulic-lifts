@@ -3,7 +3,7 @@
 /**
  * View for the control panel in the simulation.
  *
- * ControlPanel contains a background rectangle, 3 HydraulicLiftsSlider's, and a reset button.
+ * ControlPanel contains a background rectangle, three HydraulicLiftsSlider's, and a reset button.
  *
  * @author Luke Pan <curly0328@gmail.com>
  */

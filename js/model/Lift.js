@@ -26,15 +26,16 @@ define( require => {
   'use strict';
 
   // modules
+  const DerivedProperty = require( 'SIM_CORE/util/DerivedProperty' );
   const Property = require( 'SIM_CORE/util/Property' );
 
   class Lift {
 
     /**
-     * @param {number} initialCenterX - center x-coordinate for the Lift
+     * @param {number} centerX - center x-coordinate for the Lift
      * @param {object} [options] - controls Lift properties
      */
-    constructor( initialCenterX, options ) {
+    constructor( centerX, options ) {
 
       options = {
 
@@ -46,8 +47,8 @@ define( require => {
         ...options
       };
 
-      // @public (read-only) {Property.<number>} - Property of the x-coordinate of the Lift center
-      this.centerXProperty = new Property( initialCenterX, { type: 'number' } );
+      // @public (read-only) {number} - x-coordinate of the Lift center
+      this.liftCenterX = centerX;
 
       // @public (read-only) {Property.<number>} - Property of the force on or from the Lift
       this.forceProperty = new Property( options.initialForce, {
@@ -60,6 +61,13 @@ define( require => {
         type: 'number',
         isValidValue: value => value > 0 // radius must be greater than 0
       } );
+
+      // @public (read-only) {DerivedProperty.<number>} - Property of the surface area of the Lift
+      this.areaProperty = new DerivedProperty( [ this.radiusProperty ],
+       ( radius ) => {
+        return Math.PI * radius * radius;
+      } );
+
     }
 
     /**
@@ -72,22 +80,23 @@ define( require => {
     }
 
     // Convenience Methods
+
+    /**
+     * Gets the area of the Lift, assume that the surface is a circle
+     * @public
+     * @returns {number} - in meters squared
+     */
+    get area() {
+      return this.areaProperty.value;
+    }
+
     /**
      * Gets the x-coordinate of the Lift's center
      * @public
      * @returns {number} - in meters
      */
     get centerX() {
-      return this.centerXProperty.value;
-    }
-
-    /**
-     * Sets the x-coordinate of the Lift's center
-     * @public
-     * @param {number} centerX - in meters
-     */
-    set centerX( centerX ) {
-      this.centerXProperty.value = centerX;
+      return this.liftCenterX;
     }
 
     /**

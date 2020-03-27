@@ -24,9 +24,9 @@ define( require => {
   const Vector = require( 'SIM_CORE/util/Vector' );
 
   // constants
-  const INITIAL_INPUT_CENTER_Y = 220;
-  const INITIAL_OUTPUT_CENTER_Y = 330;
-  const OPENING_GAP = 1.5;
+  const INITIAL_INPUT_CENTER_Y = 220; // eyeballed
+  const INITIAL_OUTPUT_CENTER_Y = 330; // eyeballed
+  const OPENING_GAP = 1.5; // eyeballed
 
   class ContainerNode extends Node {
 
