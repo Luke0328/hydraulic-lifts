@@ -72,13 +72,13 @@ define( require => {
         stroke: 'rgb( 150, 150, 150 )',
         strokeWidth: 0.5,
         centerX: modelViewTransform.modelToViewX( container.outputLift.centerX ),
-        top: modelViewTransform.modelToViewY( 0 ) + 10,
+        top: INITIAL_OUTPUT_CENTER_Y + 20,
         cornerRadius: 1
       } );
 
       // Create the text inside the number display rectangle
       const numberDisplayText = new Text( '', {
-        fontSize: 15,
+        fontSize: 15
       } );
 
       // Link the forceProperty to the text such that the text displays the current force outputted.

@@ -14,7 +14,6 @@ define( require => {
   // modules
   const InputLift = require( 'HYDRAULIC_LIFTS/model/InputLift' );
   const OutputLift = require( 'HYDRAULIC_LIFTS/model/OutputLift' );
-  const Vector = require( 'SIM_CORE/util/Vector' );
 
   // constants
   const INPUT_LIFT_CENTER_X = -4; // eyeballed

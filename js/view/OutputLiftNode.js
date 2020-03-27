@@ -65,7 +65,7 @@ define( require => {
          * Adjust the vector tip such that it is at the top of the screen when
          * max force is exerted on the output lift
          **/
-        const tip = tail.copy().subtract( new Vector( 0, outputForce / 1.1 ) );
+        const tip = tail.copy().subtract( new Vector( 0, outputForce * 1.1 ) );
 
         this.forceArrow.tail = tail;
 

@@ -61,7 +61,7 @@ define( require => {
       } );
       // Create the text inside the background rectangle
       const numberDisplayText = new Text( '', {
-        fontSize: options.fontSize,
+        fontSize: options.fontSize
       } );
 
       // Create the text label for the slider
