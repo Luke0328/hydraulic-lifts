@@ -14,6 +14,7 @@ define( require => {
   const ContainerNode = require( 'HYDRAULIC_LIFTS/view/ContainerNode' );
   const ControlPanel = require( 'HYDRAULIC_LIFTS/view/ControlPanel' );
   const ModelViewTransform = require( 'SIM_CORE/util/ModelViewTransform' );
+  const Property = require( 'SIM_CORE/util/Property' );
   const ResetButton = require( 'SIM_CORE/scenery/buttons/ResetButton' );
   const ScreenView = require( 'SIM_CORE/scenery/ScreenView' );
 
@@ -32,6 +33,9 @@ define( require => {
 
       super();
 
+      // @public (read-only) {Property.<boolean>} - Boolean represent if the output force is visible
+      this.outputForceVisibleProperty = new Property( false, { type: 'boolean' } );
+
       // Create the model bounds centered around the center of the container
       const modelBounds = new Bounds( -25, -15, 20, 15 ); // the model bounds are 40 x 30 meters
 
@@ -47,10 +51,11 @@ define( require => {
       const modelViewTransform = new ModelViewTransform( modelBounds, viewBounds );
 
       // Create the Container Node
-      const containerNode = new ContainerNode( hydraulicLiftsModel.container, modelViewTransform );
+      const containerNode = new ContainerNode( hydraulicLiftsModel.container, this.outputForceVisibleProperty,
+       modelViewTransform );
 
       // Create the Control Panel
-      const controlPanel = new ControlPanel( hydraulicLiftsModel.container, {
+      const controlPanel = new ControlPanel( hydraulicLiftsModel.container, this.outputForceVisibleProperty, {
         left: SCREEN_VIEW_X_MARGIN,
         top: SCREEN_VIEW_Y_MARGIN
       } );

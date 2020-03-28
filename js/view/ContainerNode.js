@@ -32,10 +32,11 @@ define( require => {
 
     /**
      * @param {Container} container - Container object
+     * @param {Property.<boolean>} outputForceVisibleProperty - determines if the ouput force display text is visible
      * @param {ModelViewTransform} modelViewTransform - coordinate transform between model and view
      * @param {object} [options] - controls ContainerNode properties
      */
-    constructor( container, modelViewTransform, options ) {
+    constructor( container, outputForceVisibleProperty, modelViewTransform, options ) {
 
       options = {
         fill: 'blue', // {Color|string} - fill color
@@ -82,10 +83,16 @@ define( require => {
       } );
 
       // Link the forceProperty to the text such that the text displays the current force outputted.
-      // This link is never disposed as nothing in the sim is ever destroyed.
-      container.outputLift.forceProperty.link( value => {
+      // This multilink is never disposed as nothing in the sim is ever destroyed.
+      new Multilink( [ container.outputLift.forceProperty, outputForceVisibleProperty ],
+        ( value, isVisible ) => {
+
         numberDisplayText.setText( `${ Util.toFixed( value, 1 ) } ${ 'N' }` );
+
         numberDisplayText.center = numberDisplay.center;
+
+        numberDisplayText.visible = isVisible;
+
       } );
 
       /**

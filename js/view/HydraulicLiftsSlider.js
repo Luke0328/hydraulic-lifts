@@ -59,6 +59,7 @@ define( require => {
         centerY: options.sliderCenterY - options.numberDisplaySize.y - 4, // slight adjustment for visual effect
         cornerRadius: 1
       } );
+
       // Create the text inside the background rectangle
       const numberDisplayText = new Text( '', {
         fontSize: options.fontSize

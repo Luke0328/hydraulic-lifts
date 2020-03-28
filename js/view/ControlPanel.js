@@ -12,21 +12,24 @@ define( require => {
   'use strict';
 
   // modules
+  const Checkbox = require( 'SIM_CORE/scenery/buttons/Checkbox' );
   const HydraulicLiftsSlider = require( 'HYDRAULIC_LIFTS/view/HydraulicLiftsSlider' );
   const Node = require( 'SIM_CORE/scenery/Node' );
   const Rectangle = require( 'SIM_CORE/scenery/Rectangle' );
+  const Text = require( 'SIM_CORE/scenery/Text' );
 
   class ControlPanel extends Node {
 
     /**
      * @param {Container} container - Container object
+     * @param {Property.<boolean>} outputForceVisibleProperty - determines if the ouput force display text is visible
      * @param {object} [options] - controls ControlPanel properties
      */
-    constructor( container, options ) {
+    constructor( container, outputForceVisibleProperty, options ) {
 
       options = {
         width: 210, // {number} - width of the control panel
-        height: 300, // {number} - height of the control panel
+        height: 325, // {number} - height of the control panel
         fontSize: 15, // {number} - font size for text in the control panel
 
         padding: 10, // {number} - padding between control panel contents and outline of the background rectangle
@@ -54,7 +57,7 @@ define( require => {
         numberDisplayUnit: 'N',
         padding: options.padding,
         sliderCenterX: background.left + options.width / 2,
-        sliderCenterY: background.top + options.height / 3 - 3 * options.padding
+        sliderCenterY: background.top + options.height / 4
       } );
 
       // Create the slider for the input radius
@@ -67,7 +70,7 @@ define( require => {
         numberDisplayUnit: 'm',
         padding: options.padding,
         sliderCenterX: background.left + options.width / 2,
-        sliderCenterY: background.top + options.height * 2 / 3 - 3 * options.padding
+        sliderCenterY: background.top + options.height * 2 / 4
       } );
 
       // Create the slider for the output radius
@@ -80,7 +83,20 @@ define( require => {
         numberDisplayUnit: 'm',
         padding: options.padding,
         sliderCenterX: background.left + options.width / 2,
-        sliderCenterY: background.top + options.height - 3 * options.padding
+        sliderCenterY: background.top + options.height * 3 / 4
+      } );
+
+      // Create the checkbox that toggles the visibility of the output force number display
+      const outputForceCheckbox = new Checkbox( outputForceVisibleProperty, {
+        centerX: background.right - 32.5 - options.padding,
+        centerY: background.top + options.height - 3 * options.padding
+      } );
+
+      // Create the text labeling the checkbox
+      const checkboxText = new Text( ' Show Output Force? ', {
+        fontSize: 15,
+        left: options.padding,
+        centerY: outputForceCheckbox.centerY
       } );
 
       // Render the children in the correct z-layering
@@ -88,7 +104,9 @@ define( require => {
         background,
         inputForceSlider,
         inputRadiusSlider,
-        outputRadiusSlider
+        outputRadiusSlider,
+        outputForceCheckbox,
+        checkboxText
       ] );
 
     }
