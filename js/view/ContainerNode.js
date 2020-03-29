@@ -92,7 +92,8 @@ define( require => {
 
         numberDisplayText.setText( `${ Util.toFixed( value, 1 ) } ${ 'N' }` );
 
-        numberDisplayText.center = numberDisplay.center;
+        numberDisplayText.centerX = numberDisplay.centerX;
+        numberDisplayText.centerY = numberDisplay.centerY + 2;
 
         numberDisplayText.visible = isVisible;
 

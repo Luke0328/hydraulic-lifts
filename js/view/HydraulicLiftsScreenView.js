@@ -55,11 +55,11 @@ define( require => {
 
       // Create the Container Node
       const containerNode = new ContainerNode( hydraulicLiftsModel.container, this.outputForceVisibleProperty,
-        this.arrowsVisibleProperty, modelViewTransform );
+       this.arrowsVisibleProperty, modelViewTransform );
 
       // Create the Control Panel
       const controlPanel = new ControlPanel( hydraulicLiftsModel.container, this.outputForceVisibleProperty,
-        this.arrowsVisibleProperty, {
+       this.arrowsVisibleProperty, {
         left: SCREEN_VIEW_X_MARGIN,
         top: SCREEN_VIEW_Y_MARGIN
       } );

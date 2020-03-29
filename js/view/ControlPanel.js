@@ -107,7 +107,8 @@ define( require => {
       ] );
 
       // Create the background rectangle
-      const background = new Rectangle( flexBox.width + 2 * options.padding + 10, flexBox.height + 2 * options.padding + 10, {
+      const background = new Rectangle( flexBox.width + 2 * options.padding + 10,
+       flexBox.height + 2 * options.padding + 10, {
         cornerRadius: 5,
         stroke: 'black',
         fill: 'rgb( 238, 229, 233 )',
