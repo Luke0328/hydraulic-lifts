@@ -29,10 +29,6 @@ define( require => {
 
       options = {
 
-        controlPanelWidth: 200, // {number} - width of the control panel
-        sliderCenterY: 0, // {number} - y-coordinate of the slider center
-        sliderCenterX: 0, // {number} - x-coordinate of the slider center
-
         labelText: '', // {string} - text for the label of the HydraulicLiftsSlider
         leftLabel: '', // {string} - text for the left label of the slider bar
         rightLabel: '', // {string} - text for the right label of the slider bar
@@ -50,34 +46,34 @@ define( require => {
 
       super( options );
 
+      // Create the slider
+      const slider = new Slider( range, numberProperty, {
+        rightLabel: options.rightLabel,
+        leftLabel: options.leftLabel,
+        centerY: 50 // eyeballed
+      } );
+
       // Create the background rectangle for the number display
       const numberDisplay = new Rectangle( options.numberDisplaySize.x, options.numberDisplaySize.y, {
         fill: 'white',
         stroke: 'rgb( 150, 150, 150 )',
         strokeWidth: 0.5,
-        right: options.sliderCenterX + options.controlPanelWidth / 2 - options.padding,
-        centerY: options.sliderCenterY - options.numberDisplaySize.y - 4, // slight adjustment for visual effect
+        right: slider.right,
+        bottom: slider.top - options.padding / 2,
         cornerRadius: 1
       } );
 
       // Create the text inside the background rectangle
       const numberDisplayText = new Text( '', {
-        fontSize: options.fontSize
+        fontSize: options.fontSize,
+        center: numberDisplay.center
       } );
 
       // Create the text label for the slider
       const label = new Text( options.labelText, {
         fontSize: options.fontSize,
-        left: options.sliderCenterX - options.controlPanelWidth / 2 + options.padding,
-        centerY: numberDisplay.centerY + 4 // slight adjustment for visual effect
-      } );
-
-      // Create the slider
-      const slider = new Slider( range, numberProperty, {
-        rightLabel: options.rightLabel,
-        leftLabel: options.leftLabel,
-        centerX: options.sliderCenterX,
-        centerY: options.sliderCenterY
+        left: slider.left,
+        centerY: numberDisplay.centerY
       } );
 
       // Link the property to the text such that the text displays the current value.

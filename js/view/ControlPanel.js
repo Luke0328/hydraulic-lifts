@@ -3,7 +3,8 @@
 /**
  * View for the control panel in the simulation.
  *
- * ControlPanel contains a background rectangle and three HydraulicLiftsSlider's.
+ * ControlPanel contains a background rectangle and a Flexbox.
+ * The Flexbox holds and organizes three sliders and two checkboxes.
  *
  * @author Luke Pan <curly0328@gmail.com>
  */
@@ -12,39 +13,38 @@ define( require => {
   'use strict';
 
   // modules
-  const Checkbox = require( 'SIM_CORE/scenery/buttons/Checkbox' );
+  const FlexBox = require( 'SIM_CORE/scenery/FlexBox' );
+  const HydraulicLiftsCheckbox = require( 'HYDRAULIC_LIFTS/view/HydraulicLiftsCheckbox' );
   const HydraulicLiftsSlider = require( 'HYDRAULIC_LIFTS/view/HydraulicLiftsSlider' );
   const Node = require( 'SIM_CORE/scenery/Node' );
   const Rectangle = require( 'SIM_CORE/scenery/Rectangle' );
-  const Text = require( 'SIM_CORE/scenery/Text' );
 
   class ControlPanel extends Node {
 
     /**
      * @param {Container} container - Container object
      * @param {Property.<boolean>} outputForceVisibleProperty - determines if the ouput force display text is visible
+     * @param {Property.<boolean>} arrowsVisibleProperty - determines if the force arrows are visible
      * @param {object} [options] - controls ControlPanel properties
      */
-    constructor( container, outputForceVisibleProperty, options ) {
+    constructor( container, outputForceVisibleProperty, arrowsVisibleProperty, options ) {
 
       options = {
         width: 210, // {number} - width of the control panel
         height: 325, // {number} - height of the control panel
         fontSize: 15, // {number} - font size for text in the control panel
 
-        padding: 10, // {number} - padding between control panel contents and outline of the background rectangle
+        padding: 15, // {number} - padding between control panel contents and outline of the background rectangle
 
         // rewrite options such that it overrides the defaults above if provided.
         ...options
       };
       super( options );
 
-      // Create the background rectangle
-      const background = new Rectangle( options.width, options.height, {
-        cornerRadius: 5,
-        stroke: 'black',
-        fill: 'rgb( 238, 229, 233 )',
-        strokeWidth: 1
+      // Create the flexbox
+      const flexBox = new FlexBox( 'vertical', {
+        spacing: 30,
+        align: 'center'
       } );
 
       // Create the slider for the input force
@@ -55,9 +55,8 @@ define( require => {
         rightLabel: '10',
         leftLabel: '0',
         numberDisplayUnit: 'N',
-        padding: options.padding,
-        sliderCenterX: background.left + options.width / 2,
-        sliderCenterY: background.top + options.height / 4
+        fontSize: options.fontSize,
+        padding: options.padding
       } );
 
       // Create the slider for the input radius
@@ -68,9 +67,8 @@ define( require => {
         rightLabel: '1',
         leftLabel: '5',
         numberDisplayUnit: 'm',
-        padding: options.padding,
-        sliderCenterX: background.left + options.width / 2,
-        sliderCenterY: background.top + options.height * 2 / 4
+        fontSize: options.fontSize,
+        padding: options.padding
       } );
 
       // Create the slider for the output radius
@@ -81,32 +79,48 @@ define( require => {
         rightLabel: '5',
         leftLabel: '10',
         numberDisplayUnit: 'm',
-        padding: options.padding,
-        sliderCenterX: background.left + options.width / 2,
-        sliderCenterY: background.top + options.height * 3 / 4
+        fontSize: options.fontSize,
+        padding: options.padding
       } );
 
-      // Create the checkbox that toggles the visibility of the output force number display
-      const outputForceCheckbox = new Checkbox( outputForceVisibleProperty, {
-        centerX: background.right - 32.5 - options.padding,
-        centerY: background.top + options.height - 3 * options.padding
+      // Create the checkbox for the visibility of the ouput force
+      const outputForceCheckbox = new HydraulicLiftsCheckbox( outputForceVisibleProperty, {
+        labelText: 'Show Output Force?',
+        fontSize: options.fontSize,
+        padding: options.padding
       } );
 
-      // Create the text labeling the checkbox
-      const checkboxText = new Text( ' Show Output Force? ', {
-        fontSize: 15,
-        left: options.padding,
-        centerY: outputForceCheckbox.centerY
+      // Create the checkbox for the visibility of the force arrows
+      const forceArrowsCheckbox = new HydraulicLiftsCheckbox( arrowsVisibleProperty, {
+        labelText: 'Show Force Arrows?',
+        fontSize: options.fontSize,
+        padding: options.padding
       } );
 
-      // Render the children in the correct z-layering
-      this.setChildren( [
-        background,
+      // Set the children of the Flexbox
+      flexBox.setChildren( [
         inputForceSlider,
         inputRadiusSlider,
         outputRadiusSlider,
         outputForceCheckbox,
-        checkboxText
+        forceArrowsCheckbox
+      ] );
+
+      // Create the background rectangle
+      const background = new Rectangle( flexBox.width + 2 * options.padding + 10, flexBox.height + 2 * options.padding + 10, {
+        cornerRadius: 5,
+        stroke: 'black',
+        fill: 'rgb( 238, 229, 233 )',
+        strokeWidth: 1
+      } );
+
+      // Set the center of the flexbox to match the center of the background rectangle
+      flexBox.center = background.center;
+
+      // Render the children in the correct z-layering
+      this.setChildren( [
+        background,
+        flexBox
       ] );
 
     }

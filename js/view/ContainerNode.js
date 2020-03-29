@@ -33,10 +33,11 @@ define( require => {
     /**
      * @param {Container} container - Container object
      * @param {Property.<boolean>} outputForceVisibleProperty - determines if the ouput force display text is visible
+     * @param {Property.<boolean>} arrowsVisibleProperty - determines if the force arrows are visible
      * @param {ModelViewTransform} modelViewTransform - coordinate transform between model and view
      * @param {object} [options] - controls ContainerNode properties
      */
-    constructor( container, outputForceVisibleProperty, modelViewTransform, options ) {
+    constructor( container, outputForceVisibleProperty, arrowsVisibleProperty, modelViewTransform, options ) {
 
       options = {
         fill: 'blue', // {Color|string} - fill color
@@ -50,10 +51,12 @@ define( require => {
       super( options );
 
       // Create the input lift node
-      const inputLiftNode = new InputLiftNode( container.inputLift, INITIAL_INPUT_CENTER_Y, modelViewTransform );
+      const inputLiftNode = new InputLiftNode( container.inputLift, INITIAL_INPUT_CENTER_Y, arrowsVisibleProperty,
+        modelViewTransform );
 
       // Create the output lift node
-      const outputLiftNode = new OutputLiftNode( container.outputLift, INITIAL_OUTPUT_CENTER_Y, modelViewTransform );
+      const outputLiftNode = new OutputLiftNode( container.outputLift, INITIAL_OUTPUT_CENTER_Y, arrowsVisibleProperty,
+        modelViewTransform );
 
       // Create the container path
       const containerPath = new ContainerPath(

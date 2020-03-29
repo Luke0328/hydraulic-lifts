@@ -33,8 +33,11 @@ define( require => {
 
       super();
 
-      // @public (read-only) {Property.<boolean>} - Boolean represent if the output force is visible
+      // @public (read-only) {Property.<boolean>} - Boolean that represents if the output force is visible
       this.outputForceVisibleProperty = new Property( false, { type: 'boolean' } );
+
+      // @public (read-only) {Property.<boolean>} - Boolean that represents if the force arrows are visible
+      this.arrowsVisibleProperty = new Property( false, { type: 'boolean' } );
 
       // Create the model bounds centered around the center of the container
       const modelBounds = new Bounds( -25, -15, 20, 15 ); // the model bounds are 40 x 30 meters
@@ -52,10 +55,11 @@ define( require => {
 
       // Create the Container Node
       const containerNode = new ContainerNode( hydraulicLiftsModel.container, this.outputForceVisibleProperty,
-       modelViewTransform );
+        this.arrowsVisibleProperty, modelViewTransform );
 
       // Create the Control Panel
-      const controlPanel = new ControlPanel( hydraulicLiftsModel.container, this.outputForceVisibleProperty, {
+      const controlPanel = new ControlPanel( hydraulicLiftsModel.container, this.outputForceVisibleProperty,
+        this.arrowsVisibleProperty, {
         left: SCREEN_VIEW_X_MARGIN,
         top: SCREEN_VIEW_Y_MARGIN
       } );

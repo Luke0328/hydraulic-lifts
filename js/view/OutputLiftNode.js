@@ -21,10 +21,11 @@ define( require => {
     /**
      * @param {OutputLift} outputLift - outputLift object
      * @param {number} initialCenterY - initial center y-coordinate
+     * @param {Property.<boolean>} arrowsVisibleProperty - determines if the force arrows are visible
      * @param {ModelViewTransform} modelViewTransform - coordinate transform between model and view
      * @param {object} [options] - controls OutputLiftNode properties
      */
-    constructor( outputLift, initialCenterY, modelViewTransform, options ) {
+    constructor( outputLift, initialCenterY, arrowsVisibleProperty, modelViewTransform, options ) {
 
       // rewrite options such that it overrides the defaults above if provided.
       options = { ...options };
@@ -39,8 +40,8 @@ define( require => {
        * and the length of the forceArrow based on the force
        * This multilink is never disposed as nothing in the sim is ever destroyed.
        */
-      new Multilink( [ outputLift.radiusProperty, outputLift.forceProperty ],
-        ( outputRadius, outputForce ) => {
+      new Multilink( [ outputLift.radiusProperty, outputLift.forceProperty, arrowsVisibleProperty ],
+        ( outputRadius, outputForce, isVisible ) => {
 
         this.liftRectangle.width = modelViewTransform.modelToViewDeltaX( outputRadius * 2 );
 
@@ -70,6 +71,9 @@ define( require => {
         this.forceArrow.tail = tail;
 
         this.forceArrow.tip = tip;
+
+        // Update the visiblity of the arrows
+        this.forceArrow.visible = isVisible;
 
       } );
 
