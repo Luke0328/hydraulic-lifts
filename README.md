@@ -15,7 +15,7 @@
 # Hydraulic Lifts
 
 <!-- Badges go here. -->
-[![Actions Status](https://github.com/Luke0328/hydraulic-lifts/workflows/CI/badge.svg)](https://github.com/Luke0328/hydraulic-lifts/actions?query=workflow%3ACI)
+[![Actions Status](https:/hub.com/Luke0328/hydraulic-lifts.git/workflows/CI/badge.svg)](https:/hub.com/Luke0328/hydraulic-lifts.git/actions?query=workflow%3ACI)
 
 <!-- Description -->
 <blockquote align="left">
@@ -25,7 +25,7 @@
 </blockquote>
 
 ### Try it!
-<a href="https://github.com/Luke0328/hydraulic-lifts#readme" target="_blank">Visit the app.</a>
+<a href="https://luke0328.github.io/hydraulic-lifts/" target="_blank">Visit the app.</a>
 
 <!-- Uncomment to add a screen shot:  -->
 <!-- <img src="" alt="" style="width: 400px;"/></a> -->
@@ -52,4 +52,4 @@ Contact me via <a href="mailto:curly0328@gmail.com" target="_blank"> email</a>.
 Help improve **hydraulic-lifts** by creating a <a href="https://github.com/Luke0328/hydraulic-lifts/issues" target="_blank">New Issue</a>.
 
 <!-- Copyright -->
-<sub>Copyright © Luke Pan. All Rights Reserved.&nbsp;&nbsp;<b>|</b>&nbsp;&nbsp;See the <a href="https://github.com/Luke0328/hydraulic-lifts/blob/master/LICENSE" target="_blank">LICENSE</a>.</sub>
+<sub>Copyright © Luke Pan. All Rights Reserved.&nbsp;&nbsp;<b>|</b>&nbsp;&nbsp;See the <a href="https:/hub.com/Luke0328/hydraulic-lifts.git/blob/master/LICENSE" target="_blank">LICENSE</a>.</sub>

@@ -14,9 +14,9 @@
   "bugs": {
     "url": "https://github.com/Luke0328/hydraulic-lifts/issues"
   },
-  "homepage": "https://github.com/Luke0328/hydraulic-lifts#readme",
+  "homepage": "https://luke0328.github.io/hydraulic-lifts/",
   "devDependencies": {
-    "@brandonli8/grunt-config": "0.0.0-dev.16"
+    "@brandonli8/grunt-config": "0.0.0-dev.17"
   },
   "dependencies": {
     "requirejs": "^2.3.6",
