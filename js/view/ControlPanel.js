@@ -41,12 +41,6 @@ define( require => {
       };
       super( options );
 
-      // Create the flexbox
-      const flexBox = new FlexBox( 'vertical', {
-        spacing: 30,
-        align: 'center'
-      } );
-
       // Create the slider for the input force
       const inputForceSlider = new HydraulicLiftsSlider(
         container.inputLift.forceRange, container.inputLift.forceProperty, {
@@ -92,14 +86,19 @@ define( require => {
         fontSize: options.fontSize
       } );
 
-      // Set the children of the Flexbox
-      flexBox.setChildren( [
+
+      // Create the flexbox
+      const flexBox = new FlexBox( 'vertical', {
+        spacing: 30,
+        align: 'center',
+        children: [
         inputForceSlider,
         inputRadiusSlider,
         outputRadiusSlider,
         outputForceCheckbox,
         forceArrowsCheckbox
-      ] );
+        ]
+      } );
 
       // Create the background rectangle
       const background = new Rectangle( flexBox.width + 2 * options.padding,

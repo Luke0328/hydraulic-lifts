@@ -96,6 +96,7 @@ define( require => {
         numberDisplayText.centerY = numberDisplay.centerY + 2;
 
         numberDisplayText.visible = isVisible;
+        numberDisplay.visible = isVisible;
 
       } );
 
