@@ -34,7 +34,7 @@ define( require => {
         rightLabel: '', // {string} - text for the right label of the slider bar
 
         fontSize: 15, // {number} - font size
-        padding: 0, // {padding} - padding between control panel contents and outline of the background rectangle
+        padding: 15, // {padding} - padding between control panel contents and outline of the background rectangle
 
         numberDisplaySize: new Vector( 65, 30 ), // {Vector} - size of the number display (width, height)
         numberDisplayDecimalPlaces: 2, // {number} - number of decimal places used in the number display

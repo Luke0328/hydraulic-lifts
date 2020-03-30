@@ -34,7 +34,7 @@ define( require => {
         height: 325, // {number} - height of the control panel
         fontSize: 15, // {number} - font size for text in the control panel
 
-        padding: 15, // {number} - padding between control panel contents and outline of the background rectangle
+        padding: 20, // {number} - padding between control panel contents and outline of the background rectangle
 
         // rewrite options such that it overrides the defaults above if provided.
         ...options
@@ -55,8 +55,7 @@ define( require => {
         rightLabel: '10',
         leftLabel: '0',
         numberDisplayUnit: 'N',
-        fontSize: options.fontSize,
-        padding: options.padding
+        fontSize: options.fontSize
       } );
 
       // Create the slider for the input radius
@@ -67,8 +66,7 @@ define( require => {
         rightLabel: '1',
         leftLabel: '5',
         numberDisplayUnit: 'm',
-        fontSize: options.fontSize,
-        padding: options.padding
+        fontSize: options.fontSize
       } );
 
       // Create the slider for the output radius
@@ -79,22 +77,19 @@ define( require => {
         rightLabel: '5',
         leftLabel: '10',
         numberDisplayUnit: 'm',
-        fontSize: options.fontSize,
-        padding: options.padding
+        fontSize: options.fontSize
       } );
 
       // Create the checkbox for the visibility of the ouput force
       const outputForceCheckbox = new HydraulicLiftsCheckbox( outputForceVisibleProperty, {
         labelText: 'Show Output Force?',
-        fontSize: options.fontSize,
-        padding: options.padding
+        fontSize: options.fontSize
       } );
 
       // Create the checkbox for the visibility of the force arrows
       const forceArrowsCheckbox = new HydraulicLiftsCheckbox( arrowsVisibleProperty, {
         labelText: 'Show Force Arrows?',
-        fontSize: options.fontSize,
-        padding: options.padding
+        fontSize: options.fontSize
       } );
 
       // Set the children of the Flexbox
@@ -107,8 +102,8 @@ define( require => {
       ] );
 
       // Create the background rectangle
-      const background = new Rectangle( flexBox.width + 2 * options.padding + 10,
-       flexBox.height + 2 * options.padding + 10, {
+      const background = new Rectangle( flexBox.width + 2 * options.padding,
+       flexBox.height + 2 * options.padding, {
         cornerRadius: 5,
         stroke: 'black',
         fill: 'rgb( 238, 229, 233 )',

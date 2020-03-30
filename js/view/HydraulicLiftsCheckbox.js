@@ -26,7 +26,6 @@ define( require => {
       options = {
 
         fontSize: 15, // {number} - font size for checkbox text
-        padding: 15, // {padding} - padding between control panel contents and outline of the background rectangle
 
         labelText: '',
 
