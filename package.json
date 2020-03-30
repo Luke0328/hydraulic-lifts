@@ -5,7 +5,7 @@
     "name": "Luke Pan",
     "email": "curly0328@gmail.com"
   },
-  "version": "0.0.0-dev.0",
+  "version": "1.0.0-dev.0",
   "description": "Hydraulic Lifts is a HTML5 educational and interactive simulation that runs in the browser and explores Pascal's Law.",
   "repository": {
     "type": "git",
